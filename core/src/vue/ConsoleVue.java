@@ -9,7 +9,6 @@ public class ConsoleVue implements Vue{
 	
 	//constructeur
 	public ConsoleVue(){
-	
 	}
 	
 	//main
@@ -19,10 +18,10 @@ public class ConsoleVue implements Vue{
 		cv.enregistrerAuManager();
 	}
 
-	
 	//enregistrer à la vue
 	private void enregistrerAuManager() {
 		Manager.getInstance().setVue(this);
 	}
 
+	
 }
