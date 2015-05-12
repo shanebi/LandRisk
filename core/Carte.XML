@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE films > <!--films SYSTEM "dtd.dtd"-->
+
+<carte>
+	<territoire id='0'>
+		<noeud>
+			<x>5</x>
+			<y>5</y>
+			<noeudsVoisins>
+				<id>5.5</id>
+				<id>5.5</id>
+			</noeudsVoisins>
+		</noeud>
+		<noeud>
+			<x>10</x>
+			<y>10</y>
+			<noeudsVoisins>
+				<id>10.10</id>
+				<id>10.10</id>
+			</noeudsVoisins>
+		</noeud>
+	</territoire>
+
+	<territoire id='1'>
+		<noeud>
+			<x>15</x>
+			<y>15</y>
+			<noeudsVoisins>
+				<id>15.15</id>
+			</noeudsVoisins>
+		</noeud>
+	</territoire>
+</carte>
