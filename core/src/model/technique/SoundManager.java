@@ -7,6 +7,8 @@ import com.badlogic.gdx.utils.Disposable;
 
 /**
  * Classe qui gère les effets sonores
+ * 
+ * @author Benjamin Bertrand
  */
 public class SoundManager implements Disposable {
 
@@ -15,7 +17,8 @@ public class SoundManager implements Disposable {
 
 	/** Enumeration des sons disponibles */
 	public enum LandRiskSound {
-		CLICK("sound/click.wav");
+		// On recupere les sfx dans le dossier asset du projet android
+		CLICK("sound/click.mp3"); //Effet sonore d'un clic
 
 		private final String fileName;
 
