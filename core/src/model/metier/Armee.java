@@ -17,6 +17,14 @@ public class Armee extends Stack<Unitee> implements Serializable{
 			}
 		}
 	}
+
+	//retourne le nombre de unites de troupes
+	public int afficherNombreUniteeDansTroupes(){	
+		int res = size();
+		return res;
+	}
 	
 	
+	
+
 }
