@@ -1,11 +1,20 @@
 package model.metier;
 
+import java.util.ArrayList;
+
+import model.technique.Dice;
+import model.technique.LireXML;
+
 /**
  * Description : Class PartieEnLocale permet de lancer une partie en local
  */
 public class PartieEnLocal extends Partie {
 
+
+
 	private LireXML lx;
+	private Dice de;
+
 
 	//constructeurs
 	public PartieEnLocal(){
@@ -16,6 +25,8 @@ public class PartieEnLocal extends Partie {
 	@Override
 	public void choixCarte() {
 		lx.lireCarteXML();
+		de = new Dice();
+		
 	}
 
 	//choix de la couleur
@@ -36,42 +47,59 @@ public class PartieEnLocal extends Partie {
 		//choix des couleurs
 		choixCouleur();	
 
+		//**********
 
-		//ici attribuer au joueur les noeuds
+		//recuperation de tout les joueurs dans un var tmp
+		ArrayList<JoueurMetier> listeTmpJoueurParticipant = getJoueurParticipant();
 
-
-		//recuperation de tout les joueurs
-
-
-		//recuperation de tout les noeuds
-
+		//recuperation de tout les noeuds dans une var tmp
+		ArrayList<Noeud> listeTmpListNoeudTotaux = lx.getCarte().getListNoeudsTotaux();
 
 		//division des noeuds par le nombre de joueurs
-
-
-		//set du nombre de face du dé par nombre de joueurs
-
-
-		//lancement dé
-
-
-		//si joueur a pas atteind max de noeud
-
-
-		//attribution de l'objet de l'Arraylist à position 0
+		int nbJoueur = listeTmpJoueurParticipant.size();
+		int nbNoeudParJoueur = listeTmpListNoeudTotaux.size()/nbJoueur;
 		
 		
+		System.out.println("NB NOEUD PAR JOUEUR : "+nbNoeudParJoueur);
+
 		
+		//boucle tant que il y a encore des noeuds dans la liste
+		while(listeTmpListNoeudTotaux.size()!=0){	
+			
+			System.out.println("cb de noeud reste il : "+listeTmpListNoeudTotaux.size());
+			//set du nombre de face du dé par nombre de joueurs
+			de.setNbFace(listeTmpJoueurParticipant.size()+1);
+			
+			//lancement dé
+			int resDe = de.roll();
+			
+			System.out.println("REs du Dice : "+(resDe));
+			
+			//si joueur a pas atteind max de noeud on lui attribut le noeud
+			if(listeTmpJoueurParticipant.get(resDe-1).getListeNoeudsJoueur().size()<nbNoeudParJoueur){
+				
+				//recuperation du noeud en haut de pile et ajout a la liste du joueur
+				listeTmpJoueurParticipant.get(resDe-1).getListeNoeudsJoueur().add(listeTmpListNoeudTotaux.get(0));
+
+				//supprimer le noeud attribuer
+				listeTmpListNoeudTotaux.remove(0);
+			}
+
+			//on le retire de la liste ( le joueur)
+			else{
+				listeTmpJoueurParticipant.remove(resDe-1);
+				System.out.println("ON EST DANS LE REMOVE");
+			}
+		}
 		
-		
-		
-		
+
 	}
 
 	//retourne liXML
 	public LireXML getLireXML(){
 		return this.lx;
 	}
+	
 
 
 }

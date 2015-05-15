@@ -27,6 +27,4 @@ public abstract class Partie {
 		return joueurParticipant;
 	}
 	
-	
-
 }
