@@ -25,22 +25,14 @@ public class ConsoleVue implements Vue{
 		Manager.getInstance().jouer();
 		
 		
-		System.out.println("--- TEST DU Dé----");
 		//----- TEST 3 A SUP BENJAMEN ----  lancer dé
+		System.out.println("--- TEST DU Dé----");
 		Manager.getInstance().LanceDe();
 		System.out.println("Modifier valeur dé et relancer : ");
 		Manager.getInstance().ModifierNbFaceDice(100);
 		Manager.getInstance().LanceDe();
-		
-		
-		
-
-		
-		
-		
-		
-		
-		
+	
+	
 	}
 	
 	//enregistrer à la vue
