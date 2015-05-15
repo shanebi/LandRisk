@@ -19,6 +19,15 @@
 				<id>10.10</id>
 			</noeudsVoisins>
 		</noeud>
+		<noeud>
+			<x>15</x>
+			<y>15</y>
+			<noeudsVoisins>
+				<id>15.15</id>
+				<id>15.15</id>
+			</noeudsVoisins>
+		</noeud>
+		
 	</territoire>
 
 	<territoire id='1'>
