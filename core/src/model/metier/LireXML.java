@@ -61,7 +61,6 @@ public class LireXML
 	{
 		//Récupération d'une instance de la classe "DocumentBuilderFactory"
 		factory = DocumentBuilderFactory.newInstance();
-
 		try
 		{
 			//Creation du parseur
@@ -194,4 +193,21 @@ public class LireXML
 			listNoeuds.add(new Noeud(xParam, yParam, listNoeudsVoisins));
 		}
 	}
+
+	
+	
+
+	//******* modification de mous
+	public ArrayList<Territoire> getListTerritoires() {
+		return listTerritoires;
+	}
+
+	public ArrayList<Noeud> getListNoeuds() {
+		return listNoeuds;
+	}
+
+	public ArrayList<String> getListNoeudsVoisins() {
+		return listNoeudsVoisins;
+	}
+	
 }
