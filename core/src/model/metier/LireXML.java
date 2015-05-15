@@ -45,9 +45,14 @@ public class LireXML
 	private ArrayList<Territoire> listTerritoires;
 
 	/**
-	 * Liste de noeuds que l'on va remplir en parcourant notre fichier XML.
+	 * Liste de noeuds presents dans chaque territoire que l'on va remplir en parcourant notre fichier XML.
 	 */
 	private ArrayList<Noeud> listNoeuds;
+	
+	/**
+	 * Liste de noeuds presents dans l'ensemble des territoires que l'on va remplir en parcourant notre fichier XML.
+	 */
+	private ArrayList<Noeud> listNoeudsTotaux;
 
 	/**
 	 * Liste des noeuds voisins pour chaque noeud, que l'on va remplir en parcourant notre fichier XML.
@@ -84,6 +89,9 @@ public class LireXML
 
 		//On instancie notre liste de territoires des la creation de l'objet, car il n'y aura qu'une seule liste de Territoires
 		listTerritoires = new ArrayList<Territoire>();
+		
+		//Instanciation de la liste qui contiendra l'ensemble des noeuds de tous les territoires
+		listNoeudsTotaux = new ArrayList<Noeud>();
 	}
 
 	/**
@@ -138,7 +146,7 @@ public class LireXML
 			}
 		}
 		//On construit notre carte, apres avoir lu tous les territoires
-		carte=new Carte(listTerritoires);
+		carte=new Carte(listTerritoires, this.listNoeudsTotaux);
 	}
 
 	/**
@@ -190,7 +198,10 @@ public class LireXML
 			}
 
 			//On construit notre noeud, pour chaque noeud lu
-			listNoeuds.add(new Noeud(xParam, yParam, listNoeudsVoisins));
+			this.listNoeuds.add(new Noeud(xParam, yParam, listNoeudsVoisins));
+			
+			//On remplit notre liste qui contiendra l'ensembles des noeuds de tous les territoires
+			this.listNoeudsTotaux.add(new Noeud(xParam, yParam, listNoeudsVoisins));
 		}
 	}
 

@@ -15,19 +15,26 @@ public class Carte
 	 * Pourquoi une ArrayList ? Car l'ArrayList est particulierement rapide dans l'accessibilité à ses objets (get).
 	 */
 	private ArrayList<Territoire> listTerritoire;
+	
+	/**
+	 * Liste de noeuds presents dans l'ensemble des territoires pour une carte donnee.
+	 */
+	private ArrayList<Noeud> listNoeudsTotaux;
 
 	/**
 	 * Constructeur par defaut.
 	 */
 	public Carte(){}
-	
+
 	/**
 	 * Constructeur avec une liste de territoires en parametre.
 	 * @param listTerritoire La liste de territoires de la carte.
+	 * @param listNoeudsTotaux La liste des noeuds de tous les territoires.
 	 */
-	public Carte(ArrayList<Territoire> listTerritoire)
+	public Carte(ArrayList<Territoire> listTerritoire, ArrayList<Noeud> listNoeudsTotaux)
 	{
 		this.listTerritoire = listTerritoire;
+		this.listNoeudsTotaux = listNoeudsTotaux;
 	}
 
 	/**
@@ -46,7 +53,7 @@ public class Carte
 		}
 		return resultat;
 	}
-	
+
 	/*-------------------------GUETTER-------------------------*/
 	/**
 	 * Guetter de la liste des territoires.
@@ -55,5 +62,14 @@ public class Carte
 	public ArrayList<Territoire> getListTerritoire()
 	{
 		return listTerritoire;
+	}
+	
+	/**
+	 * Guetter de la liste contenant l'ensemble des noeuds de tous les territoires.
+	 * @return La liste des noeuds contenant l'ensemble des noeuds de tous les territoires.
+	 */
+	public ArrayList<Noeud> getListNoeudsTotaux()
+	{
+		return listNoeudsTotaux;
 	}
 }
