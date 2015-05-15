@@ -11,19 +11,19 @@ import com.badlogic.gdx.utils.JsonValue;
 public class JoueurMetier implements java.io.Serializable{
 	
 	//armée du joueur
-	private Armee a;
+	private Armee armee;
 	
 	//couleur du joeur
-	private String c;
+	private String couleur;
 	
 	//constructeur
 	public JoueurMetier() {
-		a = new Armee();
+		armee = new Armee();
 	}
 	
 	//methode choix couleur
 	public void choixCouleur(){
-		this.c = "RED";
+		this.couleur = "RED";
 	}
 
 	//methode attaque
@@ -35,7 +35,16 @@ public class JoueurMetier implements java.io.Serializable{
 	public void placementTroupes(){
 		//-- en attende de la carte
 	}
+
+	//Geetterss de mouuus 
+	public Armee getArmee() {
+		return armee;
+	}
+
+	public String getCouleur() {
+		return couleur;
+	}
 	
-	
+
 		
 }
