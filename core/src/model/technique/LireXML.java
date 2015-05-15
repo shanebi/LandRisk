@@ -209,4 +209,25 @@ public class LireXML
 			this.listNoeudsTotaux.add(new Noeud(xParam, yParam, listNoeudsVoisins));
 		}
 	}
+
+	public Carte getCarte() {
+		return carte;
+	}
+
+	public ArrayList<Noeud> getListNoeudsTotaux() {
+		return listNoeudsTotaux;
+	}
+
+	public ArrayList<Territoire> getListTerritoires() {
+		return listTerritoires;
+	}
+
+	public void setListTerritoires(ArrayList<Territoire> listTerritoires) {
+		this.listTerritoires = listTerritoires;
+	}
+
+
+	
+	
+	
 }
