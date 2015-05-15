@@ -27,7 +27,7 @@ public class Dice {
 	 */
 	public int roll() {
 		randomVal = (int)(Math.random() * (nbFace-1)) + 1;
-		return randomVal;
+		return (randomVal);
 	}
 
 	/**
