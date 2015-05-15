@@ -20,13 +20,31 @@ public class Manager {
 
 	//dé
 	private Dice di;
-	
-	
+
+
+	//test a sup
+	private Partie p;
+
+
 	//constructeur
 	private Manager() {
 		pel = new PartieEnLocal();
 		di = new Dice();
-	
+		p = new Partie() {
+
+			@Override
+			public void choixCouleur() {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void choixCarte() {
+				// TODO Auto-generated method stub
+
+			}
+		};
+
 	}
 
 	//retourne instance unique
@@ -48,19 +66,24 @@ public class Manager {
 	//--------------------------------METHODE DU JEU
 	//nouveau jeu en local
 	public void nouveauJeuEnLocal(){
-		
+
 		//--------------  TEST DE MOUS---- OKOK
 		this.pel.nouveauJeuEnLocal();
-		System.out.println(this.pel.getJoueurParticipant().get(0));
-		System.out.println("Couleur : "+this.pel.getJoueurParticipant().get(0).getCouleur());
-		System.out.println("Nombre Unitee dans troupes : "+this.pel.getJoueurParticipant().get(0).getArmee().afficherNombreUniteeDansTroupes());
-		System.out.println(this.pel.getJoueurParticipant().get(1));
-		System.out.println("Couleur : "+this.pel.getJoueurParticipant().get(1));
-		System.out.println("Nombre Unitee dans troupes : "+this.pel.getJoueurParticipant().get(1).getArmee().afficherNombreUniteeDansTroupes());
+
+
+		System.out.println("TAILLE DE LA LISTE DE JOUEUR : "+this.p.getJoueurParticipant().size());
 		
+		
+		System.out.println(this.pel.getJoueurParticipant().get(0));
+		System.out.println("Couleur : "+this.p.getJoueurParticipant().get(0).getCouleur());
+		System.out.println("Nombre Unitee dans troupes : "+this.p.getJoueurParticipant().get(0).getArmee().afficherNombreUniteeDansTroupes());
+		System.out.println(this.p.getJoueurParticipant().get(1));
+		System.out.println("Couleur : "+this.p.getJoueurParticipant().get(1));
+		System.out.println("Nombre Unitee dans troupes : "+this.p.getJoueurParticipant().get(1).getArmee().afficherNombreUniteeDansTroupes());
+
 		// ------------- TEST DE RUBBEN ----  OKOK
 		System.out.println(this.pel.getLireXML());
-		
+
 		System.out.println("-------- LISTE DES TERRITOIRES ---- ");
 
 		//test affiche les liste des territoires
@@ -68,20 +91,18 @@ public class Manager {
 			System.out.println(this.pel.getLireXML().getListTerritoires().get(i));
 		}
 
-		System.out.println("-------- LISTE DES NOEUDS ---- ");
 
-		//test affiche les liste des territoires
-		for (int i = 0; i < this.pel.getLireXML().getListTerritoires().size(); i++) {
-			System.out.println(this.pel.getLireXML().getListTerritoires().get(i).getListNoeud());
+		System.out.println("---------- VOIR LA LISTE DES NOEUDS ATTRIBUER AU JOUEUR 1");
+
+		for (int i = 0; i < this.pel.getJoueurParticipant().get(0).getListeNoeudsJoueur().size(); i++) {
+			System.out.println(this.pel.getJoueurParticipant().get(0).getListeNoeudsJoueur().get(i));
 		}
 
-		/*
-		System.out.println("-------- LISTE DES NOEUDS VOSIISN ---- ");
-		//test affiche les liste des territoires
-		for (int i = 0; i < this.pel.getLireXML().getListNoeudsVoisins().size(); i++) {
-			System.out.println(this.pel.getLireXML().getListNoeudsVoisins().get(i));
+		System.out.println("---------- VOIR LA LISTE DES NOEUDS ATTRIBUER AU JOUEUR 2");
+
+		for (int i = 0; i < this.p.getJoueurParticipant().get(1).getListeNoeudsJoueur().size(); i++) {
+			System.out.println(this.p.getJoueurParticipant().get(1).getListeNoeudsJoueur().get(i));
 		}
-		*/
 	}
 
 	//lancer Dé
@@ -137,5 +158,4 @@ public class Manager {
 	public void ModifierNbFaceDice(int nbFace) {
 		di.setNbFace(nbFace);
 	}
-
 }
