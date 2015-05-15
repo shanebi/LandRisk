@@ -20,10 +20,8 @@ public class ConsoleVue implements Vue{
 		//----- TEST 1 A SUP --- Création de la partie
 		Manager.getInstance().nouveauJeuEnLocal();
 		
-		
 		//----- TEST 2 A SUP JOUER ---- Jouer Au jeu
 		Manager.getInstance().jouer();
-		
 		
 		//----- TEST 3 A SUP BENJAMEN ----  lancer dé
 		System.out.println("--- TEST DU Dé----");
@@ -32,7 +30,6 @@ public class ConsoleVue implements Vue{
 		Manager.getInstance().ModifierNbFaceDice(100);
 		Manager.getInstance().LanceDe();
 	
-	
 	}
 	
 	//enregistrer à la vue
@@ -40,5 +37,6 @@ public class ConsoleVue implements Vue{
 		Manager.getInstance().setVue(this);
 	}
 
+	
 	
 }
