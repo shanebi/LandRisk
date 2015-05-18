@@ -70,9 +70,7 @@ public class Manager {
 		//--------------  TEST DE MOUS---- OKOK
 		this.pel.nouveauJeuEnLocal();
 
-
 		System.out.println("TAILLE DE LA LISTE DE JOUEUR : "+this.p.getJoueurParticipant().size());
-		
 		
 		System.out.println(this.pel.getJoueurParticipant().get(0));
 		System.out.println("Couleur : "+this.p.getJoueurParticipant().get(0).getCouleur());
@@ -90,8 +88,11 @@ public class Manager {
 		for (int i = 0; i < this.pel.getLireXML().getListTerritoires().size(); i++) {
 			System.out.println(this.pel.getLireXML().getListTerritoires().get(i));
 		}
-
-
+			
+	
+		System.out.println(this.pel.getJoueurParticipant().get(0).getListeNoeudsJoueur().size());
+		System.out.println(this.pel.getJoueurParticipant().get(1).getListeNoeudsJoueur().size());
+		
 		System.out.println("---------- VOIR LA LISTE DES NOEUDS ATTRIBUER AU JOUEUR 1");
 
 		for (int i = 0; i < this.pel.getJoueurParticipant().get(0).getListeNoeudsJoueur().size(); i++) {
@@ -100,11 +101,14 @@ public class Manager {
 
 		System.out.println("---------- VOIR LA LISTE DES NOEUDS ATTRIBUER AU JOUEUR 2");
 
-		for (int i = 0; i < this.p.getJoueurParticipant().get(1).getListeNoeudsJoueur().size(); i++) {
-			System.out.println(this.p.getJoueurParticipant().get(1).getListeNoeudsJoueur().get(i));
+		for (int i = 0; i < this.pel.getJoueurParticipant().get(1).getListeNoeudsJoueur().size(); i++) {
+			System.out.println(this.pel.getJoueurParticipant().get(1).getListeNoeudsJoueur().get(i));
 		}
+		
+		
 	}
-
+	
+	
 	//lancer Dé
 	public void LanceDe(){
 		System.out.println("Résultat dé : "+di.roll());
@@ -112,7 +116,6 @@ public class Manager {
 
 	//choix carte
 	public void choixCarte(){
-
 	}
 
 	//choix Couleur
@@ -147,7 +150,7 @@ public class Manager {
 
 	//desactiver music
 	public void desactiverMusic(){
-
+		
 	}
 
 	public void jouer() {
@@ -158,4 +161,5 @@ public class Manager {
 	public void ModifierNbFaceDice(int nbFace) {
 		di.setNbFace(nbFace);
 	}
+
 }

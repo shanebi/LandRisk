@@ -29,7 +29,6 @@ public class ConsoleVue implements Vue{
 		System.out.println("Modifier valeur dé et relancer : ");
 		Manager.getInstance().ModifierNbFaceDice(100);
 		Manager.getInstance().LanceDe();
-	
 	}
 	
 	//enregistrer à la vue
@@ -37,6 +36,4 @@ public class ConsoleVue implements Vue{
 		Manager.getInstance().setVue(this);
 	}
 
-	
-	
 }

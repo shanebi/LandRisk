@@ -55,7 +55,5 @@ public class JoueurMetier implements java.io.Serializable{
 	public ArrayList<Noeud> getListeNoeudsJoueur() {
 		return listeNoeudsJoueur;
 	}
-	
-
 		
 }
