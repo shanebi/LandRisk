@@ -1,4 +1,4 @@
-package vue.Screen;
+package vue.screen;
 
 import com.badlogic.gdx.Screen;
 

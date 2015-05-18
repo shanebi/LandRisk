@@ -1,5 +1,4 @@
-package vue.sceens;
-
+package vue.screen;
 
 
 import lrp.mygdx.game.MyGdxGame;
@@ -16,12 +15,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import controleur.AdaptEcran;
 
-public class Reglage implements Screen{
+public class FinJeu implements Screen{
 	MyGdxGame game;
 
-	private Sprite boutonSpriteSon;
-	private Sprite boutonSpriteMusic;	
-	private Sprite boutonSpriteVitesse;
+	private Sprite boutonSpriteScore;
+	private Sprite boutonSpriteRejouer;
+	private Sprite boutonSpriteRetour;
 	private Sprite boutonCliqueSprite;
 
 	private Sprite arrierePlanSprite;
@@ -33,10 +32,12 @@ public class Reglage implements Screen{
 	private SpriteBatch batch;
 
 
+
+
 	private float xposBouton1;
 
 	private float xposBouton2;
-	
+
 	private float xposBouton3;
 
 	private float xposBoutonRetour;
@@ -46,21 +47,22 @@ public class Reglage implements Screen{
 	private float yposBouton1;
 
 	private float yposBouton2;
-	
+
 	private float yposBouton3;
 
 	private float yposBoutonRetour;
 
 
 	private boolean cliqueBouton1;
-
 	private boolean cliqueBouton2;
-	
 	private boolean cliqueBouton3;
 
 
+	private int page;
 
-	public Reglage(MyGdxGame g) {
+
+
+	public FinJeu(MyGdxGame g) {
 
 		game = g;
 
@@ -72,27 +74,27 @@ public class Reglage implements Screen{
 
 	// Fonction qui maintien le rapport entre les positions Y
 
-			// vis-à-vis de la taille de l'écran
+	// vis-à-vis de la taille de l'écran
 
-			private float xUnite(float x)
+	private float xUnite(float x)
 
-			{
-				return AdaptEcran.setEcranPostX(x);
+	{
+		return AdaptEcran.setEcranPostX(x);
 
-			}
+	}
 
 
 
-			// Fonction qui maintien le rapport entre les positions Y
+	// Fonction qui maintien le rapport entre les positions Y
 
-			// vis-à-vis de la taille de l'écran
+	// vis-à-vis de la taille de l'écran
 
-			private float yUnite(float y)
+	private float yUnite(float y)
 
-			{
-				return AdaptEcran.setEcranPosY(y);
+	{
+		return AdaptEcran.setEcranPosY(y);
 
-			}
+	}
 
 
 
@@ -103,18 +105,19 @@ public class Reglage implements Screen{
 	public void show() {
 
 
+
+
 		batch = new SpriteBatch();
 
 
 
 		// Charger Texture dans Sprite
 
-		boutonSpriteSon =new Sprite(new Texture(Gdx.files.internal("son.png"))) ;
-		boutonSpriteMusic =new Sprite(new Texture(Gdx.files.internal("musique.png"))) ;
-		boutonSpriteVitesse =new Sprite(new Texture(Gdx.files.internal("vitesse du jeu.png"))) ;
+		boutonSpriteScore =new Sprite(new Texture(Gdx.files.internal("score.png"))) ;
+		boutonSpriteRejouer =new Sprite(new Texture(Gdx.files.internal("rejouer.png"))) ;
+		boutonSpriteRetour =new Sprite(new Texture(Gdx.files.internal("retour1.png"))) ;
 
-		
-		
+
 		boutonCliqueSprite = new Sprite(new Texture(Gdx.files.internal("quitter.png"))) ;
 
 		arrierePlanSprite = new Sprite(new Texture(Gdx.files.internal("acceuil.png")));
@@ -123,9 +126,9 @@ public class Reglage implements Screen{
 
 
 
-		boutonSpriteSon.setSize(xUnite(150), yUnite(50));
-		boutonSpriteMusic.setSize(xUnite(200), yUnite(70));
-		boutonSpriteVitesse.setSize(xUnite(350), yUnite(70));
+		boutonSpriteScore.setSize(xUnite(180), yUnite(60));
+		boutonSpriteRejouer.setSize(xUnite(180), yUnite(60));
+		boutonSpriteRetour.setSize(xUnite(180), yUnite(60));
 
 		boutonCliqueSprite.setSize(xUnite(128), yUnite(64));
 
@@ -142,18 +145,18 @@ public class Reglage implements Screen{
 		font.setScale(xUnite(1), yUnite(1)); // définir la taille du texte selon l'écran
 
 
-		xposBouton1 = xUnite(130); // Position du bouton 'nouveau jeu'
+		xposBouton1 = xUnite(150); // Position du bouton 'nouveau jeu'
 
 		yposBouton1 = yUnite(230);
 
 
 
-		xposBouton2 = xUnite(120); // Position du bouton 'Options'
+		xposBouton2 = xUnite(150); // Position du bouton 'Options'
 
 		yposBouton2 = yUnite(130);
 
 
-		xposBouton3 = xUnite(60); // Position du bouton 'Options'
+		xposBouton3 = xUnite(150); // Position du bouton 'Options'
 
 		yposBouton3 = yUnite(40);
 
@@ -165,8 +168,8 @@ public class Reglage implements Screen{
 		yposBoutonRetour = yUnite(260);
 
 		boutonRetourSprite.setPosition(xposBoutonRetour, yposBoutonRetour);
-		
-		
+
+
 
 	}
 
@@ -189,8 +192,9 @@ public class Reglage implements Screen{
 				{
 
 					// le bouton 1 (jeu local) a été cliqué
-					
-					
+					//game.setScreen(new CameraScreen(game));
+					page=1;
+
 
 				}
 
@@ -199,28 +203,28 @@ public class Reglage implements Screen{
 				{
 
 					// le bouton 2 (jeu en ligne) a été cliqué
+					game.setScreen(new Menu(game));
 
-					
 
 				}
-				
+
 				if(x>xUnite(150) && x < xUnite(320) && y>yUnite(220) && y<yUnite(280))
 
 				{
 
-					// le bouton 3 (jeu en ligne) a été cliqué
-					// game.setScreen(new NouvJeu(game));
+					// le bouton 2 (jeu en ligne) a été cliqué
+					game.setScreen(new NouvJeu(game));
 
 
 				}
-				
+
 				if(x>xUnite(0) && x<xUnite(64) && y>yUnite(0) && y<yUnite(64))
 
 				{
 
 					// le bouton retour a été cliqué
-					game.setScreen(new Menu(game));
-					
+
+					page=0;
 
 				}
 
@@ -232,8 +236,9 @@ public class Reglage implements Screen{
 				cliqueBouton1 = false;
 
 				cliqueBouton2 = false;
-				
+
 				cliqueBouton3 = false;
+
 
 
 				return false;
@@ -248,7 +253,7 @@ public class Reglage implements Screen{
 
 
 
-				if(x>xUnite(160) && x < xUnite(260) && y>yUnite(35) && y<yUnite(90))
+				if(x>xUnite(150) && x < xUnite(325) && y>yUnite(30) && y<yUnite(90))
 
 				{
 
@@ -256,24 +261,23 @@ public class Reglage implements Screen{
 
 				}
 
-				if(x>xUnite(120) && x < xUnite(318) && y>yUnite(130) && y<yUnite(190))
+				if(x>xUnite(150) && x < xUnite(320) && y>yUnite(130) && y<yUnite(190))
 
 				{
 
 					cliqueBouton2=true;
 
 				}
-				
-				if(x>xUnite(70) && x < xUnite(408) && y>yUnite(220) && y<yUnite(280))
+
+				if(x>xUnite(150) && x < xUnite(320) && y>yUnite(220) && y<yUnite(280))
 
 				{
 
 					cliqueBouton3=true;
 
-
 				}
 
-			
+
 
 				return false;
 
@@ -365,9 +369,9 @@ public class Reglage implements Screen{
 
 		{
 
-			boutonSpriteSon.setPosition(xposBouton1, yposBouton1);// fixer la position
+			boutonSpriteScore.setPosition(xposBouton1, yposBouton1);// fixer la position
 
-			boutonSpriteSon.draw(batch);                          // puis le dessiner
+			boutonSpriteScore.draw(batch);                          // puis le dessiner
 
 		}else
 
@@ -387,9 +391,9 @@ public class Reglage implements Screen{
 
 		{
 
-			boutonSpriteMusic.setPosition(xposBouton2, yposBouton2);// fixer la position
+			boutonSpriteRejouer.setPosition(xposBouton2, yposBouton2);// fixer la position
 
-			boutonSpriteMusic.draw(batch);                          // puis le dessiner
+			boutonSpriteRejouer.draw(batch);                          // puis le dessiner
 
 		}else
 
@@ -400,15 +404,18 @@ public class Reglage implements Screen{
 			boutonCliqueSprite.draw(batch);
 
 		}
-		
-		
+
+
+
+		// bouton 3
+
 		if(!cliqueBouton3) 
 
 		{
 
-			boutonSpriteVitesse.setPosition(xposBouton3, yposBouton3);// fixer la position
+			boutonSpriteRetour.setPosition(xposBouton3, yposBouton3);// fixer la position
 
-			boutonSpriteVitesse.draw(batch);                          // puis le dessiner
+			boutonSpriteRetour.draw(batch);                          // puis le dessiner
 
 		}else
 
@@ -419,12 +426,11 @@ public class Reglage implements Screen{
 			boutonCliqueSprite.draw(batch);
 
 		}
-		
-		boutonRetourSprite.draw(batch);
 
 
 
-		
+
+
 
 		batch.end();  // obligatoire pour finir le dessin sur un SpriteBatch
 
@@ -434,6 +440,26 @@ public class Reglage implements Screen{
 
 
 
+	public void dessinerPage(int page)
+
+	{
+
+		batch.begin();
+
+
+
+		if(page == 1)  // si on est à la page Game
+
+			font.draw(batch, "Score", xUnite(200), yUnite(320));  // dessiner le titre de la page 1
+		//game.setScreen(new CameraScreen(game));
+
+
+
+		boutonRetourSprite.draw(batch);
+
+		batch.end();
+
+	}
 
 	@Override
 
@@ -493,14 +519,34 @@ public class Reglage implements Screen{
 
 		manipulerMenu();  // gestion des input
 
+		if(page==2)
+			dessinerPage(2);
 
+		// Contenu de la page menu
 
-		          // Contenu de la page menu
+		//dessinerMenu();
+
+		switch(page)  // dans quelle page je me situe ?
+
+		{
+
+		case 0:              // Contenu de la page menu
 
 			dessinerMenu();
 
 
-		
+
+			break;
+
+		case 1:             // Contenu de la page Game
+
+			dessinerPage(1);
+
+			break;
+		}
+
+
+
 	}
 
 

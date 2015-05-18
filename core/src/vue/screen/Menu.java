@@ -1,4 +1,4 @@
-package vue.sceens;
+package vue.screen;
 
 
 
