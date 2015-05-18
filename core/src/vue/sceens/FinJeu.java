@@ -1,7 +1,7 @@
-package interfacen2.sceens;
+package vue.sceens;
 
-import interfacen2.manag.AdaptEcran;
-import interfacen2.manag.My2GdxGame;
+
+import lrp.mygdx.game.MyGdxGame;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
@@ -13,8 +13,10 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import controleur.AdaptEcran;
+
 public class FinJeu implements Screen{
-	My2GdxGame game;
+	MyGdxGame game;
 
 	private Sprite boutonSpriteScore;
 	private Sprite boutonSpriteRejouer;
@@ -60,7 +62,7 @@ public class FinJeu implements Screen{
 
 
 
-	public FinJeu(My2GdxGame g) {
+	public FinJeu(MyGdxGame g) {
 
 		game = g;
 

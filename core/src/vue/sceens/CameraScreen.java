@@ -1,6 +1,7 @@
-package interfacen2.sceens;
+package vue.sceens;
 
-import interfacen2.manag.My2GdxGame;
+
+import lrp.mygdx.game.MyGdxGame;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
@@ -19,7 +20,7 @@ public class CameraScreen implements Screen {
 
 	Texture background;
 	SpriteBatch batch;
-	My2GdxGame game;
+	MyGdxGame game;
 	private OrthographicCamera camera;
 	int width;
 	int height;
@@ -45,7 +46,7 @@ public class CameraScreen implements Screen {
 	 * @param game
 	 *            La variable du jeu
 	 */
-	public CameraScreen(My2GdxGame game) {
+	public CameraScreen(MyGdxGame game) {
 		this.game = game;
 		this.width = Gdx.graphics.getWidth();
 		this.height = Gdx.graphics.getHeight();

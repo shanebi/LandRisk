@@ -1,7 +1,8 @@
-package interfacen2.sceens;
+package vue.sceens;
 
-import interfacen2.manag.AdaptEcran;
-import interfacen2.manag.My2GdxGame;
+
+
+import lrp.mygdx.game.MyGdxGame;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
@@ -13,8 +14,10 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import controleur.AdaptEcran;
+
 public class Reglage implements Screen{
-	My2GdxGame game;
+	MyGdxGame game;
 
 	private Sprite boutonSpriteSon;
 	private Sprite boutonSpriteMusic;	
@@ -57,7 +60,7 @@ public class Reglage implements Screen{
 
 
 
-	public Reglage(My2GdxGame g) {
+	public Reglage(MyGdxGame g) {
 
 		game = g;
 

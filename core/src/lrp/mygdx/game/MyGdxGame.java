@@ -5,7 +5,7 @@ import vue.sceens.ImageLancement;
 
 
 
-public class My2GdxGame extends Game{
+public class MyGdxGame extends Game{
 
 	@Override
 	public void create() {

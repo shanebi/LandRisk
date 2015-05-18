@@ -1,7 +1,7 @@
-package interfacen2.sceens;
+package vue.sceens;
 
-import interfacen2.manag.AdaptEcran;
-import interfacen2.manag.My2GdxGame;
+
+import lrp.mygdx.game.MyGdxGame;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
@@ -11,15 +11,17 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import controleur.AdaptEcran;
+
 public class ImageLancement implements Screen {
 
-	My2GdxGame game;
+	MyGdxGame game;
 	private SpriteBatch batch;
 	private Sprite arrierePlanSprite;
 	private Sprite arrierePlanSpriteClique; 
 	private boolean touch = false;
 
-	public ImageLancement(My2GdxGame g) {
+	public ImageLancement(MyGdxGame g) {
 		game = g;
 	}
 
