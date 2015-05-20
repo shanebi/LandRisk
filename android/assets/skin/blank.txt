@@ -1,0 +1,1 @@
+C'est dans ce dossier que l'on place les skin (Json, etc).
