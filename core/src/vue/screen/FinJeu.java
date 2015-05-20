@@ -113,16 +113,16 @@ public class FinJeu implements Screen{
 
 		// Charger Texture dans Sprite
 
-		boutonSpriteScore =new Sprite(new Texture(Gdx.files.internal("score.png"))) ;
-		boutonSpriteRejouer =new Sprite(new Texture(Gdx.files.internal("rejouer.png"))) ;
-		boutonSpriteRetour =new Sprite(new Texture(Gdx.files.internal("retour1.png"))) ;
+		boutonSpriteScore =new Sprite(new Texture(Gdx.files.internal("icon/score.png"))) ;
+		boutonSpriteRejouer =new Sprite(new Texture(Gdx.files.internal("icon/rejouer.png"))) ;
+		boutonSpriteRetour =new Sprite(new Texture(Gdx.files.internal("icon/retour1.png"))) ;
 
 
-		boutonCliqueSprite = new Sprite(new Texture(Gdx.files.internal("quitter.png"))) ;
+		boutonCliqueSprite = new Sprite(new Texture(Gdx.files.internal("icon/quitter.png"))) ;
 
-		arrierePlanSprite = new Sprite(new Texture(Gdx.files.internal("acceuil.png")));
+		arrierePlanSprite = new Sprite(new Texture(Gdx.files.internal("icon/acceuil.png")));
 
-		boutonRetourSprite = new Sprite(new Texture(Gdx.files.internal("retour.png")));
+		boutonRetourSprite = new Sprite(new Texture(Gdx.files.internal("icon/retour.png")));
 
 
 
