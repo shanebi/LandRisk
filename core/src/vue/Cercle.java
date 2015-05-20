@@ -1,5 +1,6 @@
 package vue;
 
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputMultiplexer;
@@ -66,19 +67,15 @@ public class Cercle extends Actor {
 	 */
 	public void dessiner(SpriteBatch batch, Color couleur, String txt) {
 				
-		batch.end();
+		batch.begin();
 		
-		bFont.scale(1f); // Taille de la police de caractère
+		bFont.scale(controleur.AdaptEcran.setEcranLargeur(0.1f)); // Taille de la police de caractère
 
 		sr.begin(ShapeRenderer.ShapeType.Filled);
 
-		// Premier cercle qui va servir de bordure noir
-		sr.setColor(Color.BLACK);
-		sr.circle(x, y, radius);
-
-		// Deuxième cercle avec la couleur du joueur
+		// cercle avec la couleur du joueur
 		sr.setColor(couleur);
-		sr.circle(x, y, radius - 10);
+		sr.circle(x, y, radius);
 
 		sr.end();
 
@@ -88,7 +85,7 @@ public class Cercle extends Actor {
 		stage.addActor(lbl);
 		stage.draw();
 		
-		batch.begin();
+		batch.end();
 
 	}
 
