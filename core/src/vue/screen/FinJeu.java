@@ -14,9 +14,9 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import controleur.AdaptEcran;
+import controleur.Manager;
 
 public class FinJeu implements Screen{
-	MyGdxGame game;
 
 	private Sprite boutonSpriteScore;
 	private Sprite boutonSpriteRejouer;
@@ -62,9 +62,8 @@ public class FinJeu implements Screen{
 
 
 
-	public FinJeu(MyGdxGame g) {
+	public FinJeu() {
 
-		game = g;
 
 	}
 
@@ -203,7 +202,7 @@ public class FinJeu implements Screen{
 				{
 
 					// le bouton 2 (jeu en ligne) a été cliqué
-					game.setScreen(new Menu(game));
+					Manager.getInstance().getVue().getMoi().setScreen(new Menu());
 
 
 				}
@@ -213,7 +212,7 @@ public class FinJeu implements Screen{
 				{
 
 					// le bouton 2 (jeu en ligne) a été cliqué
-					game.setScreen(new NouvJeu(game));
+					Manager.getInstance().getVue().getMoi().setScreen(new NouvJeu());
 
 
 				}

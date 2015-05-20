@@ -12,9 +12,9 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import controleur.AdaptEcran;
+import controleur.Manager;
 
 public class NouvJeu implements Screen{
-	MyGdxGame game;
 
 	private Sprite boutonSpriteJeuLocal;
 	private Sprite boutonSpriteJeuLigne;
@@ -41,9 +41,8 @@ public class NouvJeu implements Screen{
 
 
 
-	public NouvJeu(MyGdxGame g) {
+	public NouvJeu() {
 
-		game = g;
 
 	}
 
@@ -145,7 +144,7 @@ public class NouvJeu implements Screen{
 				{
 
 					// le bouton 1 (jeu local) a été cliqué
-					 game.setScreen(new nouvCam(game));
+					 Manager.getInstance().getVue().getMoi().setScreen(new nouvCam());
 					//game.setScreen(new FinJeu(game));
 					
 

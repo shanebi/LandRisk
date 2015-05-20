@@ -10,19 +10,19 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.sun.jndi.ldap.ManageReferralControl;
 
 import controleur.AdaptEcran;
+import controleur.Manager;
 
 public class ImageLancement implements Screen {
 
-	MyGdxGame game;
 	private SpriteBatch batch;
 	private Sprite arrierePlanSprite;
 	private Sprite arrierePlanSpriteClique; 
 	private boolean touch = false;
 
-	public ImageLancement(MyGdxGame g) {
-		game = g;
+	public ImageLancement() {
 	}
 
 	// Fonction qui maintien le rapport entre les positions Y
@@ -124,7 +124,7 @@ public class ImageLancement implements Screen {
 		Gdx.input.setInputProcessor(new InputProcessor() {
 			@Override
 			public boolean touchUp(int x, int y, int pointer, int bouton) {
-				game.setScreen(new Menu(game));
+				Manager.getInstance().getVue().getMoi().setScreen(new Menu());
 				return false;
 
 			}

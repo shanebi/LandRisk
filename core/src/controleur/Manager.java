@@ -34,9 +34,9 @@ public class Manager {
 
 	// constructeur
 	private Manager() {
-		pel = new PartieEnLocal();
-		di = new Dice();
-		p = new Partie() {
+		//pel = new PartieEnLocal();
+		//di = new Dice();
+		/*p = new Partie() {
 
 			@Override
 			public void choixCouleur() {
@@ -50,6 +50,8 @@ public class Manager {
 
 			}
 		};
+		
+		*/
 
 	}
 

@@ -16,10 +16,10 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import controleur.AdaptEcran;
+import controleur.Manager;
 
 public class Menu implements Screen {
 
-		MyGdxGame game;
 
 		private Sprite boutonSpriteJeu;
 		private Sprite boutonSpriteRegle;
@@ -83,9 +83,8 @@ public class Menu implements Screen {
 
 
 
-		public Menu(MyGdxGame g) {
+		public Menu() {
 
-			game = g;
 
 		}
 
@@ -226,7 +225,7 @@ public class Menu implements Screen {
 					{
 
 						// le bouton 1 (nouv jeu) a été cliqué
-						 game.setScreen(new NouvJeu(game));
+						 Manager.getInstance().getVue().getMoi().setScreen(new NouvJeu());
 
 					}
 
@@ -235,7 +234,7 @@ public class Menu implements Screen {
 					{
 
 						// le bouton 2 (Reglages) a été cliqué
-						game.setScreen(new Reglage(game));
+						Manager.getInstance().getVue().getMoi().setScreen(new Reglage());
 						
 
 					}

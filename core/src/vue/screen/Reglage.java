@@ -14,6 +14,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 
 import controleur.AdaptEcran;
+import controleur.Manager;
 
 /**
  * Classe qui affiche l'écran des options avec le réglage du son, de la musique
@@ -23,7 +24,6 @@ import controleur.AdaptEcran;
  *
  */
 public class Reglage implements Screen {
-	MyGdxGame game;
 
 	private Sprite boutonSpriteSon;
 	private Sprite boutonSpriteMusic;
@@ -51,8 +51,7 @@ public class Reglage implements Screen {
 
 	/** Checkbox */
 	
-	public Reglage(MyGdxGame g) {
-		game = g;
+	public Reglage() {
 	}
 	
 	
@@ -173,7 +172,7 @@ public class Reglage implements Screen {
 				{
 
 					// le bouton retour a été cliqué
-					game.setScreen(new Menu(game));
+					Manager.getInstance().getVue().getMoi().setScreen(new Menu());
 
 				}
 

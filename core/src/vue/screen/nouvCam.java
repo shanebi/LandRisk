@@ -26,7 +26,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import controleur.AdaptEcran;
 
 public class nouvCam implements Screen{
-	MyGdxGame game;
 	 Texture otarie;
 	 TextureRegion MonOtarie;
 	 SpriteBatch batch;
@@ -64,9 +63,7 @@ public class nouvCam implements Screen{
 	private float largeur_Ecran;
 	private float hauteur_Ecran;
 	 
-	 public nouvCam(MyGdxGame g) {
-
-			game = g;
+	 public nouvCam() {
 			//supprimer MyGD2GdxGame de toute les constructeur
 			
 
