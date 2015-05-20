@@ -91,13 +91,13 @@ public class NouvJeu implements Screen{
 
 		// Charger Texture dans Sprite
 
-		boutonSpriteJeuLocal =new Sprite(new Texture(Gdx.files.internal("local.png"))) ;
-		boutonSpriteJeuLigne =new Sprite(new Texture(Gdx.files.internal("ligne.png"))) ;
+		boutonSpriteJeuLocal =new Sprite(new Texture(Gdx.files.internal("icon/local.png"))) ;
+		boutonSpriteJeuLigne =new Sprite(new Texture(Gdx.files.internal("icon/ligne.png"))) ;
 		
 		
-		boutonCliqueSprite = new Sprite(new Texture(Gdx.files.internal("quitter.png"))) ;
+		boutonCliqueSprite = new Sprite(new Texture(Gdx.files.internal("icon/quitter.png"))) ;
 
-		arrierePlanSprite = new Sprite(new Texture(Gdx.files.internal("acceuil.png")));
+		arrierePlanSprite = new Sprite(new Texture(Gdx.files.internal("icon/acceuil.png")));
 
 
 		//Taille du Sprite

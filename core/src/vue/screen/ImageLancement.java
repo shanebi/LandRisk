@@ -57,8 +57,8 @@ public class ImageLancement implements Screen {
 		batch = new SpriteBatch();
 
 		// Charger Texture dans Sprite
-		arrierePlanSprite = new Sprite(new Texture(Gdx.files.internal("logo1.png")));
-		arrierePlanSpriteClique = new Sprite(new Texture(Gdx.files.internal("logo2.png")));
+		arrierePlanSprite = new Sprite(new Texture(Gdx.files.internal("icon/logo1.png")));
+		arrierePlanSpriteClique = new Sprite(new Texture(Gdx.files.internal("icon/logo2.png")));
 
 		arrierePlanSprite.setSize(xUnite(480), yUnite(320));
 		arrierePlanSpriteClique.setSize(xUnite(480), yUnite(320));

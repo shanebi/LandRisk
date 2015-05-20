@@ -58,7 +58,7 @@ public class CameraScreen implements Screen {
 		largeur_Ecran = Gdx.graphics.getWidth();
 		hauteur_Ecran = Gdx.graphics.getHeight();
 
-		background = new Texture(Gdx.files.internal("map3.png"));
+		background = new Texture(Gdx.files.internal("map/map3.png"));
 		batch = new SpriteBatch();
 
 		camera = new OrthographicCamera(largeur_Ecran, hauteur_Ecran);

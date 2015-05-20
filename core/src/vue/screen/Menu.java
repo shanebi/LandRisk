@@ -134,18 +134,18 @@ public class Menu implements Screen {
 
 			// Charger Texture dans Sprite
 
-			boutonSpriteJeu =new Sprite(new Texture(Gdx.files.internal("jeu.png"))) ;
-			boutonSpriteRegle =new Sprite(new Texture(Gdx.files.internal("regles.png"))) ;
-			boutonSpriteQuitter =new Sprite(new Texture(Gdx.files.internal("quitter.png"))) ;
-			boutonSpriteReglages =new Sprite(new Texture(Gdx.files.internal("reglages.png"))) ;
-			boutonSpritelogo =new Sprite(new Texture(Gdx.files.internal("titre.png"))) ;
+			boutonSpriteJeu =new Sprite(new Texture(Gdx.files.internal("icon/jeu.png"))) ;
+			boutonSpriteRegle =new Sprite(new Texture(Gdx.files.internal("icon/regles.png"))) ;
+			boutonSpriteQuitter =new Sprite(new Texture(Gdx.files.internal("icon/quitter.png"))) ;
+			boutonSpriteReglages =new Sprite(new Texture(Gdx.files.internal("icon/reglages.png"))) ;
+			boutonSpritelogo =new Sprite(new Texture(Gdx.files.internal("icon/titre.png"))) ;
 			
 			
-			boutonCliqueSprite = new Sprite(new Texture(Gdx.files.internal("quitter.png"))) ;
+			boutonCliqueSprite = new Sprite(new Texture(Gdx.files.internal("icon/quitter.png"))) ;
 
-			arrierePlanSprite = new Sprite(new Texture(Gdx.files.internal("acceuil.png")));
+			arrierePlanSprite = new Sprite(new Texture(Gdx.files.internal("icon/acceuil.png")));
 
-			boutonRetourSprite = new Sprite(new Texture(Gdx.files.internal("retour.png")));
+			boutonRetourSprite = new Sprite(new Texture(Gdx.files.internal("icon/retour.png")));
 
 
 			//Taille du Sprite
