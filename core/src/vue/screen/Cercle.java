@@ -1,4 +1,4 @@
-package vue;
+package vue.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
@@ -11,6 +11,8 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+
+import controleur.AdaptEcran;
 
 /**
  * Classe qui se charge de créer un cercle
@@ -28,6 +30,8 @@ public class Cercle extends Actor {
 	private LabelStyle lblStyle;
 	private BitmapFont bFont;
 	private Stage stage;
+	
+	
 
 	/**
 	 * Constructeur de la classe
@@ -43,7 +47,7 @@ public class Cercle extends Actor {
 		this.x = x;
 		this.y = y;
 		this.radius = radius;
-
+		
 		stage = new Stage();
 		sr = new ShapeRenderer();
 		bFont = new BitmapFont(Gdx.files.internal("default.fnt"));
@@ -63,20 +67,16 @@ public class Cercle extends Actor {
 	 * 
 	 */
 	public void dessiner(SpriteBatch batch, Color couleur, String txt) {
-
+				
 		batch.begin();
-
-		bFont.scale(1f); // Taille de la police de caractère
+		
+		bFont.scale(AdaptEcran.setEcranLargeur(0.1f)); // Taille de la police de caractère
 
 		sr.begin(ShapeRenderer.ShapeType.Filled);
 
-		// Premier cercle qui va servir de bordure noir
-		sr.setColor(Color.BLACK);
-		sr.circle(x, y, radius);
-
-		// Deuxième cercle avec la couleur du joueur
+		// cercle avec la couleur du joueur
 		sr.setColor(couleur);
-		sr.circle(x, y, radius - 10);
+		sr.circle(x, y, radius);
 
 		sr.end();
 
@@ -85,7 +85,7 @@ public class Cercle extends Actor {
 
 		stage.addActor(lbl);
 		stage.draw();
-
+		
 		batch.end();
 
 	}
@@ -93,7 +93,9 @@ public class Cercle extends Actor {
 	public void dispose() {
 		sr.dispose();
 	}
-
+	
+	
+	
 	/**
 	 * Retourne l'ordonné X du cercle
 	 */
@@ -126,25 +128,5 @@ public class Cercle extends Actor {
 	public void setCouleur(Color couleur) {
 		this.couleur = couleur;
 	}
-
-	/**
-	 * Methode qui récupère le contenu d'un label
-	 * 
-	 * @return lbl La chaine de caractère contenu dans un label
-	 */
-	public Label getLbl() {
-		lbl.getText();
-		return lbl;
-	}
-
-	/**
-	 * Methode qui défini le contenu d'un label
-	 * 
-	 * @param txt
-	 *            Chaine de caractère que l'on souhaite afficher
-	 */
-	public void setLbl(String txt) {
-		lbl.setText(txt);
-	}
-
+	
 }

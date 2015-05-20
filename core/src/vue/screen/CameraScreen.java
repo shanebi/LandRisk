@@ -74,20 +74,6 @@ public class CameraScreen implements Screen {
 	@Override
 	public void render(float delta) {
 
-		/*** fond coloré *****/
-		/*
-		 * Gdx.gl.glClearColor(0.8f, 0.8f, 0.8f, 1);
-		 * Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		 * 
-		 * camera.update();
-		 * 
-		 * batch.setProjectionMatrix(camera.combined);//permet d'activer les
-		 * input batch.begin(); batch.draw(background, 0,
-		 * 0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight()); batch.end();
-		 * 
-		 * 
-		 * handleInput();
-		 */
 
 		GL20 gl = Gdx.graphics.getGL20();
 		gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
