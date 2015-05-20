@@ -64,7 +64,7 @@ public class Cercle extends Actor {
 	 */
 	public void dessiner(SpriteBatch batch, Color couleur, String txt) {
 
-		batch.end();
+		batch.begin();
 
 		bFont.scale(1f); // Taille de la police de caractère
 
@@ -86,7 +86,7 @@ public class Cercle extends Actor {
 		stage.addActor(lbl);
 		stage.draw();
 
-		batch.begin();
+		batch.end();
 
 	}
 
