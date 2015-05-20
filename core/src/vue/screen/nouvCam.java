@@ -24,7 +24,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import controleur.AdaptEcran;
 
 public class nouvCam implements Screen{
-	MyGdxGame game;
 	 Texture otarie;
 	 TextureRegion MonOtarie;
 	 SpriteBatch batch;
@@ -36,7 +35,7 @@ public class nouvCam implements Screen{
 	 private Stage stage;
 
 		private int nbC =0;
-		//private Vector<Cercle> TCercle = new Vector<Cercle>();
+		private Vector<Cercle> TCercle = new Vector<Cercle>();
 
 		private float x ;
 		private float y ;
@@ -62,9 +61,7 @@ public class nouvCam implements Screen{
 	private float largeur_Ecran;
 	private float hauteur_Ecran;
 	 
-	 public nouvCam(MyGdxGame g) {
-
-			game = g;
+	 public nouvCam() {
 			//supprimer MyGD2GdxGame de toute les constructeur
 			
 
@@ -104,7 +101,7 @@ public class nouvCam implements Screen{
 		largeur_Ecran = AdaptEcran.setEcranLargeur(420);
 		hauteur_Ecran = AdaptEcran.setEcranLargeur(250);
 		 // load assets
-		  otarie=new Texture(Gdx.files.internal("map3.png"));
+		  otarie=new Texture(Gdx.files.internal("map/map3.png"));
 		  limite_image_maxLargeur = otarie.getWidth() / 2;
 		  MonOtarie=new TextureRegion(otarie,0,0,1024,512);
 		  limite_image_maxLargeur = otarie.getWidth() / 2;
@@ -116,7 +113,7 @@ public class nouvCam implements Screen{
 		  batch = new SpriteBatch();
 			stage = new Stage();
 
-			/*
+			
 
 			//cercles amerique
 			TCercle.add(new Cercle(AdaptEcran.setEcranLargeur(50), AdaptEcran.setEcranLargeur(230), AdaptEcran.setEcranLargeur(11)));
@@ -145,7 +142,7 @@ public class nouvCam implements Screen{
 			}
 			nbC =0;
 			
-			*/
+			
 			//l'ecriture
 			fontPerso = new BitmapFont(Gdx.files.internal("default.fnt"));
 			style = new LabelStyle(fontPerso, Color.BLACK);
@@ -182,13 +179,13 @@ public class nouvCam implements Screen{
 				nbC++;}
 			}nbC=0;
 
-/*
+
 			while(nbC < TCercle.size()){
 				TCercle.get(nbC).dessiner(batch, Color.RED, ""+nbC);
 				nbC++;
 			}
 			nbC=0;
-			*/
+			
 			titre.setText("hgfghgfdghjgfdgh");
 			titre.setPosition(1,1);
 

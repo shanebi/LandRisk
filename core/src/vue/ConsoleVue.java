@@ -1,5 +1,6 @@
 package vue;
 
+import lrp.mygdx.game.MyGdxGame;
 import controleur.Manager;
 
 /**
@@ -34,6 +35,12 @@ public class ConsoleVue implements Vue{
 	//enregistrer à la vue
 	private void enregistrerAuManager() {
 		Manager.getInstance().setVue(this);
+	}
+
+	@Override
+	public MyGdxGame getMoi() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
