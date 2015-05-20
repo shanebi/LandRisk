@@ -28,8 +28,6 @@ public class Cercle extends Actor {
 	private LabelStyle lblStyle;
 	private BitmapFont bFont;
 	private Stage stage;
-	
-	
 
 	/**
 	 * Constructeur de la classe
@@ -45,7 +43,7 @@ public class Cercle extends Actor {
 		this.x = x;
 		this.y = y;
 		this.radius = radius;
-		
+
 		stage = new Stage();
 		sr = new ShapeRenderer();
 		bFont = new BitmapFont(Gdx.files.internal("default.fnt"));
@@ -65,9 +63,9 @@ public class Cercle extends Actor {
 	 * 
 	 */
 	public void dessiner(SpriteBatch batch, Color couleur, String txt) {
-				
+
 		batch.end();
-		
+
 		bFont.scale(1f); // Taille de la police de caractère
 
 		sr.begin(ShapeRenderer.ShapeType.Filled);
@@ -87,7 +85,7 @@ public class Cercle extends Actor {
 
 		stage.addActor(lbl);
 		stage.draw();
-		
+
 		batch.begin();
 
 	}
@@ -95,9 +93,7 @@ public class Cercle extends Actor {
 	public void dispose() {
 		sr.dispose();
 	}
-	
-	
-	
+
 	/**
 	 * Retourne l'ordonné X du cercle
 	 */
@@ -133,18 +129,22 @@ public class Cercle extends Actor {
 
 	/**
 	 * Methode qui récupère le contenu d'un label
+	 * 
 	 * @return lbl La chaine de caractère contenu dans un label
 	 */
 	public Label getLbl() {
+		lbl.getText();
 		return lbl;
 	}
 
 	/**
 	 * Methode qui défini le contenu d'un label
-	 * @param lbl Chaine de caractère que l'on souhaite afficher
+	 * 
+	 * @param txt
+	 *            Chaine de caractère que l'on souhaite afficher
 	 */
-	public void setLbl(Label lbl) {
-		this.lbl = lbl;
+	public void setLbl(String txt) {
+		lbl.setText(txt);
 	}
-	
+
 }
