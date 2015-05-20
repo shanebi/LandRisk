@@ -130,5 +130,21 @@ public class Cercle extends Actor {
 	public void setCouleur(Color couleur) {
 		this.couleur = couleur;
 	}
+
+	/**
+	 * Methode qui récupère le contenu d'un label
+	 * @return lbl La chaine de caractère contenu dans un label
+	 */
+	public Label getLbl() {
+		return lbl;
+	}
+
+	/**
+	 * Methode qui défini le contenu d'un label
+	 * @param lbl Chaine de caractère que l'on souhaite afficher
+	 */
+	public void setLbl(Label lbl) {
+		this.lbl = lbl;
+	}
 	
 }
