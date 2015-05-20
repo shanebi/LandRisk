@@ -2,6 +2,9 @@ package controleur;
 
 import model.metier.Partie;
 import model.metier.PartieEnLocal;
+import model.technique.Dice;
+import model.technique.MusicManager;
+import model.technique.SoundManager;
 import vue.Vue;
 
 /**
@@ -9,85 +12,179 @@ import vue.Vue;
  */
 public class Manager {
 
-	//instance unique
+	// instance unique
 	private static Manager instance = new Manager();
-	//vue
+	// vue
 	private Vue vue;
-	
-	//partie
+
+	// partie
 	private PartieEnLocal pel;
-	
-	//constructeur
+
+	// dé
+	private Dice di;
+
+	// test a sup
+	private Partie p;
+
+	/** Manager des effets spéciaux */
+	private SoundManager sManager;
+
+	/** Manager des musiques */
+	private MusicManager mManager;
+
+	// constructeur
 	private Manager() {
 		pel = new PartieEnLocal();
+		di = new Dice();
+		p = new Partie() {
+
+			@Override
+			public void choixCouleur() {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void choixCarte() {
+				// TODO Auto-generated method stub
+
+			}
+		};
+
 	}
 
-	//retourne instance unique
+	// retourne instance unique
 	public static Manager getInstance() {
 		return instance;
 	}
 
-	//enregistrer la vue
+	// enregistrer la vue
 	public void setVue(Vue vue) {
 		this.vue = vue;
 	}
-	
-	//retourne la vue
-	public Vue getVue(){
+
+	// retourne la vue
+	public Vue getVue() {
 		return this.vue;
 	}
 
-	
-	//--------------------------------METHODE DU JEU
-	//nouveau jeu en local
-	public void nouveauJeuEnLocal(){
+	// --------------------------------METHODE DU JEU
+	// nouveau jeu en local
+	public void nouveauJeuEnLocal() {
+
+		// -------------- TEST DE MOUS---- OKOK
 		this.pel.nouveauJeuEnLocal();
-	}
-	
-	//lancer Dé
-	public void LanceDe(){
+
+		System.out.println("TAILLE DE LA LISTE DE JOUEUR : "
+				+ this.p.getJoueurParticipant().size());
+
+		System.out.println(this.pel.getJoueurParticipant().get(0));
+		System.out.println("Couleur : "
+				+ this.p.getJoueurParticipant().get(0).getCouleur());
+		System.out.println("Nombre Unitee dans troupes : "
+				+ this.p.getJoueurParticipant().get(0).getArmee()
+						.afficherNombreUniteeDansTroupes());
+		System.out.println(this.p.getJoueurParticipant().get(1));
+		System.out.println("Couleur : " + this.p.getJoueurParticipant().get(1));
+		System.out.println("Nombre Unitee dans troupes : "
+				+ this.p.getJoueurParticipant().get(1).getArmee()
+						.afficherNombreUniteeDansTroupes());
+
+		// ------------- TEST DE RUBBEN ---- OKOK
+		System.out.println(this.pel.getLireXML());
+
+		System.out.println("-------- LISTE DES TERRITOIRES ---- ");
+
+		// test affiche les liste des territoires
+		for (int i = 0; i < this.pel.getLireXML().getListTerritoires().size(); i++) {
+			System.out.println(this.pel.getLireXML().getListTerritoires()
+					.get(i));
+		}
+
+		System.out.println(this.pel.getJoueurParticipant().get(0)
+				.getListeNoeudsJoueur().size());
+		System.out.println(this.pel.getJoueurParticipant().get(1)
+				.getListeNoeudsJoueur().size());
+
+		System.out
+				.println("---------- VOIR LA LISTE DES NOEUDS ATTRIBUER AU JOUEUR 1");
+
+		for (int i = 0; i < this.pel.getJoueurParticipant().get(0)
+				.getListeNoeudsJoueur().size(); i++) {
+			System.out.println(this.pel.getJoueurParticipant().get(0)
+					.getListeNoeudsJoueur().get(i));
+		}
+
+		System.out
+				.println("---------- VOIR LA LISTE DES NOEUDS ATTRIBUER AU JOUEUR 2");
+
+		for (int i = 0; i < this.pel.getJoueurParticipant().get(1)
+				.getListeNoeudsJoueur().size(); i++) {
+			System.out.println(this.pel.getJoueurParticipant().get(1)
+					.getListeNoeudsJoueur().get(i));
+		}
 
 	}
-	
-	//choix carte
-	public void choixCarte(){
-			
-	}
-	
-	//choix Couleur
-	public void choixCouleur(){
-		
-	}
-	
-	//attaque
-	public void attaque(){
-	
-	}
-	
-	//placement troupes
-	public void placementTroupes(){
-		
-	}
-	
-	//activerSon
-	public void activerSon(){
-		
-	}
-	
-	//desactiver son
-	public void desactiverSon(){
-		
+
+	// lancer Dé
+	public void LanceDe() {
+		System.out.println("Résultat dé : " + di.roll());
 	}
 
-	//activer music
-	public void activerMusic(){
-		
+	// choix carte
+	public void choixCarte() {
 	}
-	
-	//desactiver music
-	public void desactiverMusic(){
-		
+
+	// choix Couleur
+	public void choixCouleur() {
+
 	}
-	
-	
+
+	// attaque
+	public void attaque() {
+
+	}
+
+	// placement troupes
+	public void placementTroupes() {
+
+	}
+
+	/**
+	 * Methode qui active les effets sonore du jeu
+	 */
+	public void activerSon() {
+		sManager.setEnabled(true);
+	}
+
+	/**
+	 * Methode qui désactive les effets sonore du jeu
+	 */
+	public void desactiverSon() {
+		sManager.setEnabled(false);
+	}
+
+	/**
+	 * Methode qui active la musique du jeu
+	 */
+	public void activerMusic() {
+		mManager.setEnabled(true);
+	}
+
+	/**
+	 * Methode qui désactive la musique du jeu
+	 */
+	public void desactiverMusic() {
+		mManager.setEnabled(false);
+	}
+
+	public void jouer() {
+
+	}
+
+	// modifier nombre face du dé
+	public void ModifierNbFaceDice(int nbFace) {
+		di.setNbFace(nbFace);
+	}
+
 }

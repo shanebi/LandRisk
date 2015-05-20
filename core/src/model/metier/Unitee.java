@@ -7,8 +7,7 @@ import java.io.Serializable;
  */
 public class Unitee implements Serializable{
 	
-	public Unitee() {
-		
+	public Unitee() {	
 	}
 
 }

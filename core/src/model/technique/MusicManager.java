@@ -15,7 +15,7 @@ import com.badlogic.gdx.utils.Disposable;
  */
 public class MusicManager implements Disposable {
 
-	/** Holds the music currently being played, if any */
+	/** Indique si une musique est en cours de lecture */
 	private LandRiskMusic musicBeingPlayed;
 	/** Le volume par défaut de la musique */
 	private float volume = 1f;
@@ -83,7 +83,7 @@ public class MusicManager implements Disposable {
 		musicResource.setLooping(true);
 		musicResource.play();
 
-		// set the music being played
+		// On se souvient de la musique en cours de lecture
 		musicBeingPlayed = music;
 		musicBeingPlayed.setMusicResource(musicResource);
 	}

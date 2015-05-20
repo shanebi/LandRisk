@@ -1,5 +1,7 @@
 package model.metier;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Json.Serializable;
 import com.badlogic.gdx.utils.JsonValue;
@@ -11,19 +13,24 @@ import com.badlogic.gdx.utils.JsonValue;
 public class JoueurMetier implements java.io.Serializable{
 	
 	//armée du joueur
-	private Armee a;
+	private Armee armee;
 	
 	//couleur du joeur
-	private String c;
+	private String couleur;
+
+	//liste de noeuds
+	private ArrayList<Noeud> listeNoeudsJoueur;
+
 	
 	//constructeur
 	public JoueurMetier() {
-		a = new Armee();
+		armee = new Armee();
+		listeNoeudsJoueur = new ArrayList<Noeud>();
 	}
 	
 	//methode choix couleur
 	public void choixCouleur(){
-		this.c = "RED";
+		this.couleur = "RED";
 	}
 
 	//methode attaque
@@ -35,7 +42,18 @@ public class JoueurMetier implements java.io.Serializable{
 	public void placementTroupes(){
 		//-- en attende de la carte
 	}
-	
-	
+
+	//Geetterss de mouuus 
+	public Armee getArmee() {
+		return armee;
+	}
+
+	public String getCouleur() {
+		return couleur;
+	}
+
+	public ArrayList<Noeud> getListeNoeudsJoueur() {
+		return listeNoeudsJoueur;
+	}
 		
 }
