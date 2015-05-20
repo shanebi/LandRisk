@@ -130,7 +130,7 @@ public class nouvCam implements Screen{
 			//afrique
 			TCercle.add(new Cercle(AdaptEcran.setEcranLargeur(230), AdaptEcran.setEcranLargeur(170), AdaptEcran.setEcranLargeur(11)));
 			TCercle.add(new Cercle(AdaptEcran.setEcranLargeur(250), AdaptEcran.setEcranLargeur(110), AdaptEcran.setEcranLargeur(11)));
-			//russi
+			//Russie
 			TCercle.add(new Cercle(AdaptEcran.setEcranLargeur(290), AdaptEcran.setEcranLargeur(220), AdaptEcran.setEcranLargeur(11)));
 			TCercle.add(new Cercle(AdaptEcran.setEcranLargeur(370), AdaptEcran.setEcranLargeur(230), AdaptEcran.setEcranLargeur(11)));
 			//australie
