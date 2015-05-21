@@ -29,14 +29,21 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import controleur.AdaptEcran;
 
 public class nouvCam implements Screen{
+	
 	 Texture otarie;
 	 TextureRegion MonOtarie;
 	 SpriteBatch batch;
 	 OrthographicCamera camera;
 	 BitmapFont fontPerso;
 	 LabelStyle style;
+	 
+	 
+	 //mes labels mous
 	 Label joueur;
 	 Label statue;
+	 
+	 
+	 
 	 TextButton bouton1;
 	 TextButton bouton3;
 	 TextButton bouton10;
@@ -372,5 +379,23 @@ public class nouvCam implements Screen{
 		});
 
 	}
+
+	
+	//getters 
+	public Label getJoueur() {
+		return joueur;
+	}
+
+
+
+	public Label getStatue() {
+		return statue;
+	}
+	
+	
+	
+	
+	
+	
 
 }
