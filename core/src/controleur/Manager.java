@@ -4,6 +4,7 @@ import model.metier.Partie;
 import model.metier.PartieEnLocal;
 import model.technique.Dice;
 import model.technique.MusicManager;
+import model.technique.MusicManager.LandRiskMusic;
 import model.technique.SoundManager;
 import vue.Vue;
 
@@ -27,13 +28,17 @@ public class Manager {
 	private Partie p;
 
 	/** Manager des effets spéciaux */
-	private SoundManager sManager;
+	private SoundManager soundManager;
 
 	/** Manager des musiques */
-	private MusicManager mManager;
+	private MusicManager musicManager;
 
 	// constructeur
 	private Manager() {
+		
+		musicManager = new MusicManager();
+		soundManager = new SoundManager();
+		
 		//pel = new PartieEnLocal();
 		//di = new Dice();
 		/*p = new Partie() {
@@ -156,28 +161,28 @@ public class Manager {
 	 * Methode qui active les effets sonore du jeu
 	 */
 	public void activerSon() {
-		sManager.setEnabled(true);
+		soundManager.setEnabled(true);
 	}
 
 	/**
 	 * Methode qui désactive les effets sonore du jeu
 	 */
 	public void desactiverSon() {
-		sManager.setEnabled(false);
+		soundManager.setEnabled(false);
 	}
 
 	/**
 	 * Methode qui active la musique du jeu
 	 */
 	public void activerMusic() {
-		mManager.setEnabled(true);
+		musicManager.setEnabled(true);
 	}
 
 	/**
 	 * Methode qui désactive la musique du jeu
 	 */
 	public void desactiverMusic() {
-		mManager.setEnabled(false);
+		musicManager.setEnabled(false);
 	}
 
 	public void jouer() {
@@ -189,4 +194,19 @@ public class Manager {
 		di.setNbFace(nbFace);
 	}
 
+	
+	
+	/**
+	 * Methode qui appelle la musique qui sera joué dans le menu principal
+	 */
+	public void musicMenu(){
+		musicManager.play(LandRiskMusic.MENU);
+	}
+	
+	/**
+	 * Methode qui appelle la musique qui sera joué durant une partie
+	 */
+	public void musicMap(){
+		musicManager.play(LandRiskMusic.MAP2);
+	}
 }
