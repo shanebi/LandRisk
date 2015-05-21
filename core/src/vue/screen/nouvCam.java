@@ -6,6 +6,7 @@ import java.util.Vector;
 
 
 
+
 import vue.Cercle;
 //import vue.Cercle;
 import vue.Ligne;
@@ -34,6 +35,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 import controleur.AdaptEcran;
+import controleur.Manager;
 
 public class nouvCam implements Screen{
 	 Texture otarie;
@@ -118,6 +120,10 @@ public class nouvCam implements Screen{
 
 	@Override
 	public void show() {
+		
+		//On lance la musique de la partie
+		Manager.getInstance().musicMap();
+		
 		largeur_Ecran = AdaptEcran.setEcranLargeur(420);
 		hauteur_Ecran = AdaptEcran.setEcranLargeur(250);
 		 // load assets

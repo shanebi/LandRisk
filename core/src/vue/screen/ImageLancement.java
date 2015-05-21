@@ -63,6 +63,7 @@ public class ImageLancement implements Screen {
 		arrierePlanSprite.setSize(xUnite(480), yUnite(320));
 		arrierePlanSpriteClique.setSize(xUnite(480), yUnite(320));
 
+		Manager.getInstance().musicMenu();
 
 	}
 
