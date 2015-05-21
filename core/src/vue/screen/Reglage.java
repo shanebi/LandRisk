@@ -1,7 +1,5 @@
 package vue.screen;
 
-import lrp.mygdx.game.MyGdxGame;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
@@ -11,8 +9,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
-
 import controleur.AdaptEcran;
 import controleur.Manager;
 
@@ -45,9 +41,9 @@ public class Reglage implements Screen {
 	private float yposBouton3;
 	private float yposBoutonRetour;
 
-	private boolean cliqueBouton1;
-	private boolean cliqueBouton2;
-	private boolean cliqueBouton3;
+	private boolean boolSfx;
+	private boolean boolMusic;
+	private boolean boolVitesse;
 
 	/** Checkbox */
 	
@@ -176,11 +172,11 @@ public class Reglage implements Screen {
 
 				}
 
-				cliqueBouton1 = false;
+				boolSfx = false;
 
-				cliqueBouton2 = false;
+				boolMusic = false;
 
-				cliqueBouton3 = false;
+				boolVitesse = false;
 
 				return false;
 
@@ -194,7 +190,7 @@ public class Reglage implements Screen {
 
 				{
 
-					cliqueBouton1 = true;
+					boolSfx = true;
 
 				}
 
@@ -203,7 +199,7 @@ public class Reglage implements Screen {
 
 				{
 
-					cliqueBouton2 = true;
+					boolMusic = true;
 
 				}
 
@@ -212,7 +208,7 @@ public class Reglage implements Screen {
 
 				{
 
-					cliqueBouton3 = true;
+					boolVitesse = true;
 
 				}
 
@@ -276,8 +272,8 @@ public class Reglage implements Screen {
 		// arrierePlan
 		arrierePlanSprite.draw(batch);
 
-		// bouton 1
-		if (!cliqueBouton1) {
+		//Bouton des effets spéciaux
+		if (!boolSfx) {
 
 			// Fixer la position
 			boutonSpriteSon.setPosition(xposBouton1, yposBouton1);
@@ -287,10 +283,11 @@ public class Reglage implements Screen {
 		} else {
 			boutonCliqueSprite.setPosition(xposBouton1, yposBouton1);
 			boutonCliqueSprite.draw(batch);
+			Manager.getInstance().desactiverSon(); //On désactive les effets sonores
 		}
 
-		// bouton 2
-		if (!cliqueBouton2) {
+		//Bouton de la musique
+		if (!boolMusic) {
 			// fixer la position
 			boutonSpriteMusic.setPosition(xposBouton2, yposBouton2);
 			// puis le dessiner
@@ -299,9 +296,11 @@ public class Reglage implements Screen {
 		} else {
 			boutonCliqueSprite.setPosition(xposBouton2, yposBouton2);
 			boutonCliqueSprite.draw(batch);
+			Manager.getInstance().desactiverMusic(); //On désactive la musique
 		}
 
-		if (!cliqueBouton3) {
+		/*
+		if (!boolVitesse) {
 
 			// fixer la position
 			boutonSpriteVitesse.setPosition(xposBouton3, yposBouton3);
@@ -312,9 +311,11 @@ public class Reglage implements Screen {
 			boutonCliqueSprite.setPosition(xposBouton3, yposBouton3);
 			boutonCliqueSprite.draw(batch);
 		}
+		*/
 
 		boutonRetourSprite.draw(batch);
 		batch.end(); // obligatoire pour finir le dessin sur un SpriteBatch
+		
 
 	}
 
