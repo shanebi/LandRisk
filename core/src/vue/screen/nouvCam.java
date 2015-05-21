@@ -3,10 +3,6 @@ package vue.screen;
 import java.util.Vector;
 
 
-
-
-
-
 //import vue.Cercle;
 import vue.Ligne;
 import lrp.mygdx.game.MyGdxGame;
