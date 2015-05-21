@@ -42,7 +42,9 @@ public class nouvCam implements Screen{
 	 LabelStyle style;
 	 Label joueur;
 	 Label statue;
-	 TextButton bouton;
+	 TextButton bouton1;
+	 TextButton bouton3;
+	 TextButton bouton10;
 	 
 	 private Stage stage;
 
@@ -165,26 +167,37 @@ public class nouvCam implements Screen{
 			statue = new Label(null, style);
 			
 			// le boutton
-			/*TextButtonStyle styleBouton = new TextButtonStyle(
+			btnUp = new Texture(Gdx.files.internal("number/1.png"));
+			btnDown = new Texture(Gdx.files.internal("number/2.png"));
+			btnChecked = new Texture(Gdx.files.internal("number/4.png"));
+			TextButtonStyle styleBouton = new TextButtonStyle(
 					new TextureRegionDrawable(new TextureRegion(btnUp)),
 					new TextureRegionDrawable(new TextureRegion(btnDown)),
 					new TextureRegionDrawable(new TextureRegion(btnChecked)) ,
 					fontPerso);
 			/***style over, champ de la superclasse *****/
-			/*styleBouton.over = new TextureRegionDrawable(new TextureRegion(btnDown));
+			styleBouton.over = new TextureRegionDrawable(new TextureRegion(btnDown));
 
-			bouton = new TextButton("111",styleBouton);
-			bouton.setPosition(120, 10);
-			btnUp = new Texture(Gdx.files.internal("quitter.png"));
-			btnDown = new Texture(Gdx.files.internal("quitter.png"));
-			btnChecked = new Texture(Gdx.files.internal("quitter.png"));
-			bouton.addListener(new ClickListener() {
+			bouton1 = new TextButton("1",styleBouton);
+			bouton1.setPosition(AdaptEcran.setEcranLargeur(420),AdaptEcran.setEcranLargeur(230));
+			bouton1.addListener(new ClickListener() {
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 				{
 					Gdx.app.exit();
 					return false;    
 				}
-			});*/
+			});
+			
+			
+			bouton3 = new TextButton("3",styleBouton);
+			bouton3.setPosition(AdaptEcran.setEcranLargeur(420),AdaptEcran.setEcranLargeur(200));
+			bouton3.addListener(new ClickListener() {
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
+				{
+					Gdx.app.exit();
+					return false;    
+				}
+			});
 			
 		
 			stage.draw();
@@ -228,7 +241,8 @@ public class nouvCam implements Screen{
 
 			stage.addActor(joueur);
 			stage.addActor(statue);
-			stage.addActor(bouton);
+			stage.addActor(bouton1);
+			stage.addActor(bouton3);
 			
 			stage.draw();
 			
