@@ -2,18 +2,14 @@ package vue.screen;
 
 import java.util.Vector;
 
-
-//import vue.Cercle;
 import vue.Ligne;
-import lrp.mygdx.game.MyGdxGame;
 
-import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -22,18 +18,17 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 import controleur.AdaptEcran;
 
-public class nouvCam implements Screen{
+public class NouvCam implements Screen{
+	
 	 Texture otarie;
 	 TextureRegion MonOtarie;
 	 SpriteBatch batch;
-	 OrthographicCamera camera;
 	 BitmapFont fontPerso;
 	 LabelStyle style;
 	 Label joueur;
@@ -41,6 +36,7 @@ public class nouvCam implements Screen{
 	 TextButton bouton1;
 	 TextButton bouton3;
 	 TextButton bouton10;
+	 Skin skin;
 	 
 	 private Stage stage;
 
@@ -73,19 +69,14 @@ public class nouvCam implements Screen{
 	private Texture btnUp;
 	private Texture btnDown;
 	private Texture btnChecked;
-	 
-	 public nouvCam() {
-			//supprimer MyGD2GdxGame de toute les constructeur
-			
-
-		}
+	
 
 	
 
 	@Override
 	public void resize(int width, int height) {
 		
-		  camera.setToOrtho(false,width,height);
+		  //camera.setToOrtho(false,width,height);
 		
 	}
 
@@ -112,7 +103,7 @@ public class nouvCam implements Screen{
 	@Override
 	public void show() {
 		largeur_Ecran = AdaptEcran.setEcranLargeur(420);
-		hauteur_Ecran = AdaptEcran.setEcranLargeur(250);
+		hauteur_Ecran = AdaptEcran.setEcranLargeur(260);
 		 // load assets
 		  otarie=new Texture(Gdx.files.internal("map/map3.png"));
 		  limite_image_maxLargeur = otarie.getWidth() / 2;
@@ -120,7 +111,7 @@ public class nouvCam implements Screen{
 		  limite_image_maxLargeur = otarie.getWidth() / 2;
 		  batch=new SpriteBatch();
 		  // create viewport
-		  camera=new OrthographicCamera();
+		  //camera=new OrthographicCamera();
 		  
 		  
 		  batch = new SpriteBatch();
@@ -156,44 +147,33 @@ public class nouvCam implements Screen{
 			nbC =0;
 			
 			
+			createBasicSkin();
+			
+			bouton1 = new TextButton("1", skin); // Use the initialized skin
+	        bouton1.setPosition(AdaptEcran.setEcranLargeur(420),AdaptEcran.setEcranLargeur(230));
+	        stage.addActor(bouton1);
+	        
+	        bouton1.addListener( new ClickListener() {              
+			    public void clicked(InputEvent event, float x, float y) {
+			    	System.out.println("On quitte l'application.");
+			    };
+			});
+
+	        bouton3 = new TextButton("3", skin); // Use the initialized skin
+	        bouton3.setPosition(AdaptEcran.setEcranLargeur(420),AdaptEcran.setEcranLargeur(180));
+	        stage.addActor(bouton3);
+	        
+	        bouton10 = new TextButton("10", skin); // Use the initialized skin
+	        bouton10.setPosition(AdaptEcran.setEcranLargeur(420),AdaptEcran.setEcranLargeur(130));
+	        stage.addActor(bouton10);
+	        
+			
+			
 			//l'ecriture
 			fontPerso = new BitmapFont(Gdx.files.internal("default.fnt"));
 			style = new LabelStyle(fontPerso, Color.BLACK);
 			joueur = new Label(null, style);
 			statue = new Label(null, style);
-			
-			// le boutton
-			btnUp = new Texture(Gdx.files.internal("number/1.png"));
-			btnDown = new Texture(Gdx.files.internal("number/2.png"));
-			btnChecked = new Texture(Gdx.files.internal("number/4.png"));
-			TextButtonStyle styleBouton = new TextButtonStyle(
-					new TextureRegionDrawable(new TextureRegion(btnUp)),
-					new TextureRegionDrawable(new TextureRegion(btnDown)),
-					new TextureRegionDrawable(new TextureRegion(btnChecked)) ,
-					fontPerso);
-			/***style over, champ de la superclasse *****/
-			styleBouton.over = new TextureRegionDrawable(new TextureRegion(btnDown));
-
-			bouton1 = new TextButton("1",styleBouton);
-			bouton1.setPosition(AdaptEcran.setEcranLargeur(420),AdaptEcran.setEcranLargeur(230));
-			bouton1.addListener(new ClickListener() {
-				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
-				{
-					Gdx.app.exit();
-					return false;    
-				}
-			});
-			
-			
-			bouton3 = new TextButton("3",styleBouton);
-			bouton3.setPosition(AdaptEcran.setEcranLargeur(420),AdaptEcran.setEcranLargeur(200));
-			bouton3.addListener(new ClickListener() {
-				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
-				{
-					Gdx.app.exit();
-					return false;    
-				}
-			});
 			
 		
 			stage.draw();
@@ -204,11 +184,10 @@ public class nouvCam implements Screen{
 		
 		Gdx.gl.glClearColor(1,1,1, 1);
 		  Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		  manipulerJeu();
+		  //manipulerJeu();
 		  // render our images
-		  batch.setProjectionMatrix(camera.combined);
 		  batch.begin();
-		  batch.draw(MonOtarie,0,40,largeur_Ecran,hauteur_Ecran);
+		  batch.draw(MonOtarie,AdaptEcran.setEcranLargeur(0), AdaptEcran.setEcranLargeur(20),largeur_Ecran,hauteur_Ecran);
 		  batch.end();
 		  
 		  calculePoint();
@@ -239,6 +218,7 @@ public class nouvCam implements Screen{
 			stage.addActor(statue);
 			stage.addActor(bouton1);
 			stage.addActor(bouton3);
+			stage.addActor(bouton10);
 			
 			stage.draw();
 			
@@ -259,7 +239,7 @@ public class nouvCam implements Screen{
 			if(!dep){
 				x = Gdx.input.getX();
 				y = (Gdx.graphics.getHeight()-Gdx.input.getY());
-/*
+
 				while(nbC < TCercle.size()){
 					if(x< TCercle.get(nbC).getX()+25 && x> TCercle.get(nbC).getX()-25 && y< TCercle.get(nbC).getY()+25  && y> TCercle.get(nbC).getY()-25){
 						x = Gdx.input.getX();
@@ -270,14 +250,14 @@ public class nouvCam implements Screen{
 					nbC++;
 				}
 				nbC=0;
-*/
+
 
 			}
 
 			else if(dep){
 				x1 = Gdx.input.getX();
 				y1 = (Gdx.graphics.getHeight()-Gdx.input.getY());
-/*
+
 				while(nbC < TCercle.size()){
 					if(x1< TCercle.get(nbC).getX()+25 && x1> TCercle.get(nbC).getX()-25 && y1< TCercle.get(nbC).getY()+25  && y1> TCercle.get(nbC).getY()-25){
 						if(x!=x1)
@@ -296,7 +276,7 @@ public class nouvCam implements Screen{
 					nbC++;
 				}
 				nbC=0;
-*/
+
 			}
 
 		}
@@ -314,64 +294,31 @@ public class nouvCam implements Screen{
 
 	}
 	
-	public void manipulerJeu()
+	
+	
+	
+	private void createBasicSkin(){
+		  //Create a font
+		  BitmapFont font = new BitmapFont();
+		  font.scale(1f);
+		  skin = new Skin();
+		  skin.add("default", font);
 
-	{
+		  //Create a texture
+		  Pixmap pixmap = new Pixmap((int)Gdx.graphics.getWidth()/10,(int)Gdx.graphics.getHeight()/20, Pixmap.Format.RGB888);
+		  pixmap.setColor(Color.RED);
+		  pixmap.fill();
+		  skin.add("background",new Texture(pixmap));
 
-		Gdx.input.setInputProcessor(new InputProcessor() {
+		  //Create a button style
+		  TextButton.TextButtonStyle textButtonStyle = new TextButton.TextButtonStyle();
+		  textButtonStyle.up = skin.newDrawable("background", Color.PINK);
+		  textButtonStyle.down = skin.newDrawable("background", Color.DARK_GRAY);
+		  textButtonStyle.checked = skin.newDrawable("background", Color.DARK_GRAY);
+		  textButtonStyle.over = skin.newDrawable("background", Color.LIGHT_GRAY);
+		  textButtonStyle.font = skin.getFont("default");
+		  skin.add("default", textButtonStyle);
 
-			@Override
-			public boolean keyDown(int keycode) {
-				// TODO Auto-generated method stub
-				return false;
-			}
-
-			@Override
-			public boolean keyUp(int keycode) {
-				// TODO Auto-generated method stub
-				return false;
-			}
-
-			@Override
-			public boolean keyTyped(char character) {
-				// TODO Auto-generated method stub
-				return false;
-			}
-
-			@Override
-			public boolean touchDown(int screenX, int screenY, int pointer,
-					int button) {
-				// TODO Auto-generated method stub
-				return false;
-			}
-
-			@Override
-			public boolean touchUp(int screenX, int screenY, int pointer,
-					int button) {
-				// TODO Auto-generated method stub
-				return false;
-			}
-
-			@Override
-			public boolean touchDragged(int screenX, int screenY, int pointer) {
-				// TODO Auto-generated method stub
-				return false;
-			}
-
-			@Override
-			public boolean mouseMoved(int screenX, int screenY) {
-				// TODO Auto-generated method stub
-				return false;
-			}
-
-			@Override
-			public boolean scrolled(int amount) {
-				// TODO Auto-generated method stub
-				return false;
-			}
-			
-		});
-
-	}
+		}
 
 }

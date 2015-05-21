@@ -144,7 +144,7 @@ public class NouvJeu implements Screen{
 				{
 
 					// le bouton 1 (jeu local) a été cliqué
-					 Manager.getInstance().getVue().getMoi().setScreen(new nouvCam());
+					 Manager.getInstance().getVue().getMoi().setScreen(new NouvCam());
 					//game.setScreen(new FinJeu(game));
 					
 
