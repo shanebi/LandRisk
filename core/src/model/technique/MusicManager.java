@@ -26,12 +26,9 @@ public class MusicManager implements Disposable {
 	 * Enumération des musiques disponible.
 	 */
 	public enum LandRiskMusic {
-		// On recupere les musiques dans le dossier asset du projet android
-		/** Musique du menu (si besoin) */
-		MENU("music/augha.mp3"),
-		/** Musique du plateau de jeu */
-		MAP("music/adarkheart.mp3"); 
-		//MAP(music/beneaththeshadows.mp3);
+	
+		/** Musique du jeu */
+		MENU("music/augha.mp3"),MAP1("music/adarkheart.mp3"), MAP2("music/beneaththeshadows.mp3");
 
 		private String fileName;
 		private Music musicResource;
