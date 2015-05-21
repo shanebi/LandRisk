@@ -1,5 +1,9 @@
 package lrp.mygdx.game;
 
+import model.technique.MusicManager;
+import model.technique.Preference;
+import model.technique.SoundManager;
+
 import com.badlogic.gdx.Game;
 
 import controleur.Manager;
@@ -9,7 +13,12 @@ import vue.screen.ImageLancement;
 
 
 public class MyGdxGame extends Game implements Vue{
-
+	
+	private MusicManager musicManager;
+	private Preference preferencesManager;
+	private SoundManager soundManager;
+	
+	
 	@Override
 	public void create() {
 		enregistrerAuManager();
@@ -31,6 +40,17 @@ public class MyGdxGame extends Game implements Vue{
 		
 		*/
 		
+		// Creation du manager Preference
+        preferencesManager = new Preference();
+
+        // Creation du manager musique
+        musicManager = new MusicManager();
+        musicManager.setEnabled(preferencesManager.isMusicEnabled());
+	
+        // Creation du manager son
+        soundManager = new SoundManager();
+        soundManager.setEnabled(preferencesManager.isSoundEffectsEnabled());
+		
 		setScreen(new ImageLancement());
 
 	}
@@ -44,5 +64,21 @@ public class MyGdxGame extends Game implements Vue{
 	private void enregistrerAuManager() {
 		Manager.getInstance().setVue(this);
 	}
+	
+	/**
+	 * On récupère le manager musical
+	 * @return Le manager des musiques
+	 */
+    public MusicManager getMusicManager(){
+        return musicManager;
+    }
+    
+    /**
+     * On récupere le manager sonore
+     * @return Le manager des effets sonores
+     */
+    public SoundManager getSoundManager(){
+    	return soundManager;
+    }
 
 }
