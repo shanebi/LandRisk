@@ -4,15 +4,21 @@ import java.util.Vector;
 
 
 
+
+
 import vue.Cercle;
 //import vue.Cercle;
 import vue.Ligne;
+import lrp.mygdx.game.MyGdxGame;
+
+import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -21,6 +27,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -29,24 +36,18 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import controleur.AdaptEcran;
 
 public class nouvCam implements Screen{
-	
 	 Texture otarie;
 	 TextureRegion MonOtarie;
 	 SpriteBatch batch;
 	 OrthographicCamera camera;
 	 BitmapFont fontPerso;
 	 LabelStyle style;
-	 
-	 
-	 //mes labels mous
 	 Label joueur;
 	 Label statue;
-	 
-	 
-	 
 	 TextButton bouton1;
 	 TextButton bouton3;
 	 TextButton bouton10;
+	 Skin skin;
 	 
 	 private Stage stage;
 
@@ -162,6 +163,22 @@ public class nouvCam implements Screen{
 			nbC =0;
 			
 			
+			createBasicSkin();
+			
+			bouton1 = new TextButton("1", skin); // Use the initialized skin
+	        bouton1.setPosition(AdaptEcran.setEcranLargeur(420),AdaptEcran.setEcranLargeur(230));
+	        stage.addActor(bouton1);
+
+	        bouton3 = new TextButton("3", skin); // Use the initialized skin
+	        bouton3.setPosition(AdaptEcran.setEcranLargeur(420),AdaptEcran.setEcranLargeur(180));
+	        stage.addActor(bouton3);
+	        
+	        bouton10 = new TextButton("10", skin); // Use the initialized skin
+	        bouton10.setPosition(AdaptEcran.setEcranLargeur(420),AdaptEcran.setEcranLargeur(130));
+	        stage.addActor(bouton10);
+	        
+			
+			
 			//l'ecriture
 			fontPerso = new BitmapFont(Gdx.files.internal("default.fnt"));
 			style = new LabelStyle(fontPerso, Color.BLACK);
@@ -169,7 +186,7 @@ public class nouvCam implements Screen{
 			statue = new Label(null, style);
 			
 			// le boutton
-			btnUp = new Texture(Gdx.files.internal("number/1.png"));
+			/*btnUp = new Texture(Gdx.files.internal("number/1.png"));
 			btnDown = new Texture(Gdx.files.internal("number/2.png"));
 			btnChecked = new Texture(Gdx.files.internal("number/4.png"));
 			TextButtonStyle styleBouton = new TextButtonStyle(
@@ -178,7 +195,7 @@ public class nouvCam implements Screen{
 					new TextureRegionDrawable(new TextureRegion(btnChecked)) ,
 					fontPerso);
 			/***style over, champ de la superclasse *****/
-			styleBouton.over = new TextureRegionDrawable(new TextureRegion(btnDown));
+			/*styleBouton.over = new TextureRegionDrawable(new TextureRegion(btnDown));
 
 			bouton1 = new TextButton("1",styleBouton);
 			bouton1.setPosition(AdaptEcran.setEcranLargeur(420),AdaptEcran.setEcranLargeur(230));
@@ -191,8 +208,14 @@ public class nouvCam implements Screen{
 			});
 			
 			
-			bouton3 = new TextButton("3",styleBouton);
-			bouton3.setPosition(AdaptEcran.setEcranLargeur(420),AdaptEcran.setEcranLargeur(200));
+			btnUp = new Texture(Gdx.files.internal("number/3.png"));
+			TextButtonStyle styleBouton1 = new TextButtonStyle(
+					new TextureRegionDrawable(new TextureRegion(btnUp)),
+					new TextureRegionDrawable(new TextureRegion(btnDown)),
+					new TextureRegionDrawable(new TextureRegion(btnChecked)) ,
+					fontPerso);
+			bouton3 = new TextButton("3",styleBouton1);
+			bouton3.setPosition(AdaptEcran.setEcranLargeur(420),AdaptEcran.setEcranLargeur(180));
 			bouton3.addListener(new ClickListener() {
 				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
 				{
@@ -200,6 +223,23 @@ public class nouvCam implements Screen{
 					return false;    
 				}
 			});
+			
+			btnUp = new Texture(Gdx.files.internal("number/9.png"));
+			TextButtonStyle styleBouton2 = new TextButtonStyle(
+					new TextureRegionDrawable(new TextureRegion(btnUp)),
+					new TextureRegionDrawable(new TextureRegion(btnDown)),
+					new TextureRegionDrawable(new TextureRegion(btnChecked)) ,
+					fontPerso);
+			bouton10 = new TextButton("10",styleBouton2);
+			bouton10.setPosition(AdaptEcran.setEcranLargeur(420),AdaptEcran.setEcranLargeur(130));
+			bouton10.addListener(new ClickListener() {
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
+				{
+					Gdx.app.exit();
+					return false;    
+				}
+			});*/
+			
 			
 		
 			stage.draw();
@@ -245,6 +285,7 @@ public class nouvCam implements Screen{
 			stage.addActor(statue);
 			stage.addActor(bouton1);
 			stage.addActor(bouton3);
+			stage.addActor(bouton10);
 			
 			stage.draw();
 			
@@ -379,23 +420,46 @@ public class nouvCam implements Screen{
 		});
 
 	}
+	
+	
+	private void createBasicSkin(){
+		  //Create a font
+		  BitmapFont font = new BitmapFont();
+		  font.scale(1f);
+		  skin = new Skin();
+		  skin.add("default", font);
+
+		  //Create a texture
+		  Pixmap pixmap = new Pixmap((int)AdaptEcran.setEcranLargeur(2),(int)AdaptEcran.setEcranLargeur(8), Pixmap.Format.RGB888);
+		  pixmap.setColor(Color.RED);
+		  pixmap.fill();
+		  skin.add("background",new Texture(pixmap));
+
+		  //Create a button style
+		  TextButton.TextButtonStyle textButtonStyle = new TextButton.TextButtonStyle();
+		  textButtonStyle.up = skin.newDrawable("background", Color.PINK);
+		  textButtonStyle.down = skin.newDrawable("background", Color.DARK_GRAY);
+		  textButtonStyle.checked = skin.newDrawable("background", Color.DARK_GRAY);
+		  textButtonStyle.over = skin.newDrawable("background", Color.LIGHT_GRAY);
+		  textButtonStyle.font = skin.getFont("default");
+		  skin.add("default", textButtonStyle);
+
+		}
+
+
 
 	
-	//getters 
+	//getters
 	public Label getJoueur() {
 		return joueur;
 	}
 
-
-
 	public Label getStatue() {
 		return statue;
 	}
-	
-	
-	
-	
-	
-	
 
+	
+	
+	
+	
 }
