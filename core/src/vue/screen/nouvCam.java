@@ -3,12 +3,10 @@ package vue.screen;
 import java.util.Vector;
 
 
+
 import vue.Cercle;
 //import vue.Cercle;
 import vue.Ligne;
-import lrp.mygdx.game.MyGdxGame;
-
-import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
@@ -19,9 +17,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton.TextButtonStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 import controleur.AdaptEcran;
 
@@ -32,7 +35,11 @@ public class nouvCam implements Screen{
 	 OrthographicCamera camera;
 	 BitmapFont fontPerso;
 	 LabelStyle style;
-	 Label titre;
+	 Label joueur;
+	 Label statue;
+	 TextButton bouton1;
+	 TextButton bouton3;
+	 TextButton bouton10;
 	 
 	 private Stage stage;
 
@@ -62,6 +69,9 @@ public class nouvCam implements Screen{
 		public static int limite_image_minLargeur = 0; // limite déplacement camera
 	private float largeur_Ecran;
 	private float hauteur_Ecran;
+	private Texture btnUp;
+	private Texture btnDown;
+	private Texture btnChecked;
 	 
 	 public nouvCam() {
 			//supprimer MyGD2GdxGame de toute les constructeur
@@ -129,8 +139,8 @@ public class nouvCam implements Screen{
 			//afrique
 			TCercle.add(new Cercle(AdaptEcran.setEcranLargeur(230), AdaptEcran.setEcranLargeur(170), AdaptEcran.setEcranLargeur(11)));
 			TCercle.add(new Cercle(AdaptEcran.setEcranLargeur(250), AdaptEcran.setEcranLargeur(110), AdaptEcran.setEcranLargeur(11)));
-			//Russie
-			TCercle.add(new Cercle(AdaptEcran.setEcranLargeur(290), AdaptEcran.setEcranLargeur(220), AdaptEcran.setEcranLargeur(11)));
+			//russi
+			TCercle.add(new Cercle(AdaptEcran.setEcranLargeur(310), AdaptEcran.setEcranLargeur(220), AdaptEcran.setEcranLargeur(11)));
 			TCercle.add(new Cercle(AdaptEcran.setEcranLargeur(370), AdaptEcran.setEcranLargeur(230), AdaptEcran.setEcranLargeur(11)));
 			//australie
 			TCercle.add(new Cercle(AdaptEcran.setEcranLargeur(340), AdaptEcran.setEcranLargeur(120), AdaptEcran.setEcranLargeur(11)));
@@ -148,7 +158,42 @@ public class nouvCam implements Screen{
 			//l'ecriture
 			fontPerso = new BitmapFont(Gdx.files.internal("default.fnt"));
 			style = new LabelStyle(fontPerso, Color.BLACK);
-			titre = new Label(null, style);
+			joueur = new Label(null, style);
+			statue = new Label(null, style);
+			
+			// le boutton
+			btnUp = new Texture(Gdx.files.internal("number/1.png"));
+			btnDown = new Texture(Gdx.files.internal("number/2.png"));
+			btnChecked = new Texture(Gdx.files.internal("number/4.png"));
+			TextButtonStyle styleBouton = new TextButtonStyle(
+					new TextureRegionDrawable(new TextureRegion(btnUp)),
+					new TextureRegionDrawable(new TextureRegion(btnDown)),
+					new TextureRegionDrawable(new TextureRegion(btnChecked)) ,
+					fontPerso);
+			/***style over, champ de la superclasse *****/
+			styleBouton.over = new TextureRegionDrawable(new TextureRegion(btnDown));
+
+			bouton1 = new TextButton("1",styleBouton);
+			bouton1.setPosition(AdaptEcran.setEcranLargeur(420),AdaptEcran.setEcranLargeur(230));
+			bouton1.addListener(new ClickListener() {
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
+				{
+					Gdx.app.exit();
+					return false;    
+				}
+			});
+			
+			
+			bouton3 = new TextButton("3",styleBouton);
+			bouton3.setPosition(AdaptEcran.setEcranLargeur(420),AdaptEcran.setEcranLargeur(200));
+			bouton3.addListener(new ClickListener() {
+				public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
+				{
+					Gdx.app.exit();
+					return false;    
+				}
+			});
+			
 		
 			stage.draw();
 	}
@@ -162,11 +207,6 @@ public class nouvCam implements Screen{
 		  // render our images
 		  batch.setProjectionMatrix(camera.combined);
 		  batch.begin();
-		  fontPerso = new BitmapFont(Gdx.files.internal("default.fnt")
-					 ,Gdx.files.internal("default.png"), false);
-					style = new LabelStyle(fontPerso, new Color(Color.YELLOW));//fonte et couleur
-					titre = new Label("Interface de jeu", style);
-					titre.setPosition(5, 5);//positionne à l'écran
 		  batch.draw(MonOtarie,0,40,largeur_Ecran,hauteur_Ecran);
 		  batch.end();
 		  
@@ -188,10 +228,17 @@ public class nouvCam implements Screen{
 			}
 			nbC=0;
 			
-			titre.setText("hgfghgfdghjgfdgh");
-			titre.setPosition(1,1);
+			joueur.setText("joueur");
+			joueur.setPosition(AdaptEcran.setEcranLargeur(10),AdaptEcran.setEcranLargeur(10));
+			
+			statue.setText("statue du  la partie");
+			statue.setPosition(AdaptEcran.setEcranLargeur(60),AdaptEcran.setEcranLargeur(10));
 
-			stage.addActor(titre);
+			stage.addActor(joueur);
+			stage.addActor(statue);
+			stage.addActor(bouton1);
+			stage.addActor(bouton3);
+			
 			stage.draw();
 			
 		
@@ -211,7 +258,7 @@ public class nouvCam implements Screen{
 			if(!dep){
 				x = Gdx.input.getX();
 				y = (Gdx.graphics.getHeight()-Gdx.input.getY());
-
+/*
 				while(nbC < TCercle.size()){
 					if(x< TCercle.get(nbC).getX()+25 && x> TCercle.get(nbC).getX()-25 && y< TCercle.get(nbC).getY()+25  && y> TCercle.get(nbC).getY()-25){
 						x = Gdx.input.getX();
@@ -222,14 +269,14 @@ public class nouvCam implements Screen{
 					nbC++;
 				}
 				nbC=0;
-
+*/
 
 			}
 
 			else if(dep){
 				x1 = Gdx.input.getX();
 				y1 = (Gdx.graphics.getHeight()-Gdx.input.getY());
-
+/*
 				while(nbC < TCercle.size()){
 					if(x1< TCercle.get(nbC).getX()+25 && x1> TCercle.get(nbC).getX()-25 && y1< TCercle.get(nbC).getY()+25  && y1> TCercle.get(nbC).getY()-25){
 						if(x!=x1)
@@ -248,7 +295,7 @@ public class nouvCam implements Screen{
 					nbC++;
 				}
 				nbC=0;
-
+*/
 			}
 
 		}
